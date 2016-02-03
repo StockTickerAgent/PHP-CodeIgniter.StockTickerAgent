@@ -51,6 +51,9 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
+### Composer ###
+composer.phar
+/vendor/
 
 ### Windows ###
 # Windows image file caches
