@@ -2,6 +2,15 @@
 All notable changes to this project will be documented to this file.
 Change Log history will be recorded in descending order
 
+## 0.0.4
+** Added Files **
+- Created a base controller for parsing the template file
+** Changed Files **
+- Made the Home controller the new default route
+- Removed unused code
+- Changed name of Portfolio and Stock view to remove the word 'temp' from infront
+- Updated autoload config file to load the database and parser module
+
 ## 0.0.3
 ** Changed Files **
 - Added Home Controller
