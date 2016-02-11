@@ -10,5 +10,8 @@ if (!defined('APPPATH'))
 </head>
 <body>
    {content}
+   {stock}
+    {Name}
+   {/stock}
 </body>
 </html>
