@@ -20,14 +20,14 @@ class Portfolio extends CI_Controller {
 	 */
 	public function index()
 	{
-       
-        
-        $this->load->view("TempPortfolio");
+        $this->load->model("PortfolioModel");
+        $data['query'] = $this->PortfolioModel->getAllPortfolio();
+        $this->load->view("TempPortfolio",$data);
 	}
     
     public function getPortfolio($person){
         $this->load->model("PortfolioModel");
-        $data['query'] = $this->PortfolioModel->getResult($person);
+        $data['query'] = $this->PortfolioModel->getSpecificPortfolio($person);
         $this->load->view("TempPortfolio",$data);
     }
 }
