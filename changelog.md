@@ -2,6 +2,12 @@
 All notable changes to this project will be documented to this file.
 Change Log history will be recorded in descending order
 
+## 0.0.9
+** Added Files **
+- Stocks Controller & Stocks View
+- Get data from database to the Stocks View.
+- Populated the stocks select list
+
 ## 0.0.8
 ** Changed Files **
 - Updated _template file to include header and footer views.
