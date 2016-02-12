@@ -8,12 +8,16 @@ class Home extends MY_Controller {
     $this->load->model('stocks');
     $stock= $this->stocks->get_stock();
 
-    foreach($stock->result() AS $row){
-      echo $row->Name;
-    }
+    foreach($stock->result() as $row)
+                $data[] = $row;
+                
 
-    $this->data['pagebody'] = 'home';
+    $this->data['pagebody'] = 'Home';
+    
+    $this->data['stock'] = $data;
+    
     $this->render();
+    
   }
 
 }

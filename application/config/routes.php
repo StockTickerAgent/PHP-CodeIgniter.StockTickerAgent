@@ -53,4 +53,6 @@ $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+
+$route["portfolio"] = "Portfolio";
 $route["portfolio/(:any)"] = "Portfolio/getPortfolio/$1";

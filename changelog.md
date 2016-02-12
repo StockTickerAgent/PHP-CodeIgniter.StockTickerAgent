@@ -2,6 +2,10 @@
 All notable changes to this project will be documented to this file.
 Change Log history will be recorded in descending order
 
+## 0.0.5
+** Changed Files **
+- Changed the Home, Portfolio, _template so you can pass variables from controller to the view
+
 ## 0.0.4
 ** Added Files **
 - Created a base controller for parsing the template file
