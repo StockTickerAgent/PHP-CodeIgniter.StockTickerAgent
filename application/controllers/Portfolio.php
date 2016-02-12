@@ -5,7 +5,6 @@ class Portfolio extends MY_Controller {
 
 	public function index() {
         $this->load->model("PortfolioModel");
-   	    $this->data['pagebody'] = 'portfolio_all';
         
         $playerList = $this->PortfolioModel->getAllPortfolio();
         
@@ -14,8 +13,8 @@ class Portfolio extends MY_Controller {
             $playerListResult[] = $row;
         }
         
+        $this->data['pagebody'] = 'portfolio_all';
         $this->data['playerList'] = $playerListResult;
-        
         $this->render();
 	}
 
