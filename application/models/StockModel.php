@@ -7,6 +7,32 @@ class StockModel extends CI_Model {
         parent::__construct();
     }
     
-    
+    public function getAllStock(){
+       $this->db->select('*');
+       $query = $this->db->get('stocks');
+       return $query;
+   }
+   
+   public function getSpecificStockMovements($stock){
+        $this->load->database();
+        $this->db->select('*');
+        $this->db->from('stocks');
+        $this->db->join('movements','movements.Code = stocks.Code');
+        $this->db->where('stocks.Name', $stock);
+        $query = $this->db->get();
+ 
+        return $query;
+   }
+   
+   public function getSpecificStockTrans($stock){
+        $this->load->database();
+        $this->db->select('*');
+        $this->db->from('stocks');
+        $this->db->join('transactions','transactions.Stock = stocks.Code');
+        $this->db->where('stocks.Name', $stock);
+        $query = $this->db->get();
+ 
+        return $query;
+   }
 
 }

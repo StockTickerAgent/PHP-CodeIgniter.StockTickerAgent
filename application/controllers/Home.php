@@ -5,6 +5,7 @@ class Home extends MY_Controller {
 
   function index()
   {
+      /*
     $this->load->model('stocks');
     $stock= $this->stocks->get_stock();
 
@@ -12,9 +13,10 @@ class Home extends MY_Controller {
       $data[] = $row;
 
     $this->data['stock'] = $data;
+    */
     $this->data['pagebody'] = 'Home';
     $this->render();
-
+    
   }
 
 }
