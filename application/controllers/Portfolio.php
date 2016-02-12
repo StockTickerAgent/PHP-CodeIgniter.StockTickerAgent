@@ -11,14 +11,15 @@ class Portfolio extends MY_Controller {
   public function getPortfolio($person){
     $this->load->model("PortfolioModel");
     $query = $this->PortfolioModel->getSpecificPortfolio($person);
-    
-    foreach($query->result() as $row){
-        echo $row->DateTime . " " . $row->Player . " " . $row->Stock . " " . $row->Trans . " " . $row->Quantity;
-        echo "<br />";
-        $data[] = $row;
-    }
-                
 
+    // Outputs all records to array for easier use
+    $result = array();
+    foreach($query->result() as $row){
+      $result[] = $row;
+    }
+
+    // Pass the result to the view
+    $this->data['stocks'] = $result;
     $this->data['pagebody'] = 'portfolio_single';
     $this->render();
   }
