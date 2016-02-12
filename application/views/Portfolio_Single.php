@@ -1,0 +1,16 @@
+<table>
+  <thead>
+    <td>Name</td>
+    <td>Value</td>
+    <td>Type</td>
+    <td>Quantity</td>
+  </thead>
+  {stocks}
+    <tr>
+      <td>{Stock}</td>
+      <td>{Cash}</td>
+      <td>{Trans}</td>
+      <td>{Quantity}</td>
+    </tr>
+  {/stocks}
+</table>
