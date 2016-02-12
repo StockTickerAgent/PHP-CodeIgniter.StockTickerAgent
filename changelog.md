@@ -2,6 +2,12 @@
 All notable changes to this project will be documented to this file.
 Change Log history will be recorded in descending order
 
+## 0.0.8
+** Changed Files **
+- Updated _template file to include header and footer views.
+- Replace remote bootstrap and jquery loading with local files
+- Update MY_Controller to load in header and footer into _template file
+
 ## 0.0.7
 ** Changed Files **
 - Updated the Portfolio_Single, Portfolio Controller to show the current holdings of the specific user.
