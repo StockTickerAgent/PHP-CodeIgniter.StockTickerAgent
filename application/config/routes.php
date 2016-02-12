@@ -55,4 +55,4 @@ $route['translate_uri_dashes'] = FALSE;
 
 
 $route["portfolio"] = "Portfolio";
-$route["portfolio/(:any)"] = "Portfolio/getPortfolio/$1";
+$route["portfolio/(:any)"] = "Portfolio/getSpecificPortfolio/$1";

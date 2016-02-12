@@ -2,6 +2,12 @@
 All notable changes to this project will be documented to this file.
 Change Log history will be recorded in descending order
 
+## 0.0.7
+** Changed Files **
+- Updated the Portfolio_Single, Portfolio Controller to show the current holdings of the specific user.
+- Changed function name in Portfolio Controller to be more specific. From getPortfolio($person) to getSpecificPortfolio($person)
+- Added functionality to the index method of Portfolio Controller to pass the list of players
+
 ## 0.0.6
 ** Changed Files **
 - Updated the Portfolio controller so that it passes data correctly to the view

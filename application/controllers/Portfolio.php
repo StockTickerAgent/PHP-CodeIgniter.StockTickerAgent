@@ -4,24 +4,54 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Portfolio extends MY_Controller {
 
 	public function index() {
+        $this->load->model("PortfolioModel");
    	    $this->data['pagebody'] = 'portfolio_all';
+        
+        $playerList = $this->PortfolioModel->getAllPortfolio();
+        
+        $playerListResult = array();
+        foreach($playerList->result() as $row){
+            $playerListResult[] = $row;
+        }
+        
+        $this->data['playerList'] = $playerListResult;
+        
         $this->render();
 	}
 
-  public function getPortfolio($person){
-    $this->load->model("PortfolioModel");
-    $query = $this->PortfolioModel->getSpecificPortfolio($person);
+    public function getSpecificPortfolio($person){
+        $this->load->model("PortfolioModel");
+        $query = $this->PortfolioModel->getSpecificPortfolio($person);
 
-    // Outputs all records to array for easier use
-    $result = array();
-    foreach($query->result() as $row){
-      $result[] = $row;
+        // Outputs all records to array for easier use
+        $stockResult = array();
+        $currentHoldings = array();
+    
+        foreach($query->result() as $row){
+            $stockResult[] = $row;
+            
+            if($row->Trans == "buy"){
+                if(array_key_exists($row->Stock, $currentHoldings)){
+                    $currentHoldings[$row->Stock]->Quantity += $row->Quantity;
+                    
+                } else {
+                    $currentHoldings[$row->Stock] = clone $row;
+                }
+            } else {
+                if(array_key_exists($row->Stock, $currentHoldings)){
+                    $currentHoldings[$row->Stock]->Quantity -= $row->Quantity;
+                } else {
+                    $currentHoldings[$row->Stock] = clone $row;
+                    $currentHoldings[$row->Stock]->Quantity *= -1;
+                }
+            }
+        }
+    
+        // Pass the result to the view
+        $this->data['stocks'] = $stockResult;
+        $this->data['pagebody'] = 'portfolio_single';
+        $this->data['currentHoldings'] = $currentHoldings;
+        
+        $this->render();
     }
-
-    // Pass the result to the view
-    $this->data['stocks'] = $result;
-    $this->data['pagebody'] = 'portfolio_single';
-    $this->render();
-  }
-
 }
