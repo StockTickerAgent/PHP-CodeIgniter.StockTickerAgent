@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
       <h3>Choose a Portfolio</h3>
-      <p class="lead">Please select a player from the list provided before to view their stock portfolio.</p>
+      <p class="lead">Please select a player from the list provided below to view their stock portfolio.</p>
         <div class="box-group">
           <table id="player-list" class="table table-striped">
               <thead>
