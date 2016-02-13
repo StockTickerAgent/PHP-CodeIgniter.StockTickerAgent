@@ -2,6 +2,10 @@
 All notable changes to this project will be documented to this file.
 Change Log history will be recorded in descending order
 
+## 0.2.6
+** Changed Files **
+- Modified the look of Single stock view to match the style of the rest of the site
+
 ## 0.2.5
 ** Changed Files **
 - Modified the look of both Single and All portfolio views to match the style of the rest of the site
