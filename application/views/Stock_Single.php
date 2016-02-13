@@ -1,6 +1,6 @@
 <div id="stocks">
   <h1>Stock Movements - {title}</h1>
-  <table>
+  <table class="table table-striped">
     <thead>
       <td>Date - Time</td>
       <td>Code</td>
@@ -18,7 +18,7 @@
   </table>
 
   <h1>Stock Transactions</h1>
-  <table>
+  <table class="table table-striped">
     <thead>
       <td>Date - Time</td>
       <td>Player</td>
