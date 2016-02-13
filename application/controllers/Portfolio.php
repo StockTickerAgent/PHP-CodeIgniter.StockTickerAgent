@@ -54,7 +54,12 @@ class Portfolio extends MY_Controller {
             $this->data['name'] = $name;
 
             $this->render();
-
-
+    }
+    
+    public function formSpecificPortfolio(){
+        //$this->getSpecificPortfolio($this->input->get('playerChoice'));
+        //echo "HI";
+        $player = $this->input->get('playerChoice');
+        redirect("portfolio/$player");
     }
 }

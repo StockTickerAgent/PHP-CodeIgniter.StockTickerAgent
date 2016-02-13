@@ -17,10 +17,8 @@ class Stock extends MY_Controller {
         $this->render();
     }     
     
-    public function getSpecificStock(){
+    public function getSpecificPortfolio($stock){
         $this->load->model("StockModel");
-        
-        $stock = $this->input->get('stockChoice');
         
         $query = $this->StockModel->getSpecificStockMovements($stock);
 
@@ -42,6 +40,13 @@ class Stock extends MY_Controller {
         $this->render();
         
     }    
+    
+    public function formSpecificStock(){
+        //$this->getSpecificPortfolio($this->input->get('playerChoice'));
+        //echo "HI";
+        $stock = $this->input->get('stockChoice');
+        redirect("stocks/$stock");
+    }
             
         
 
