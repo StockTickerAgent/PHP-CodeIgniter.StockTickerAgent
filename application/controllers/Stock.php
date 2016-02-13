@@ -20,7 +20,7 @@ class Stock extends MY_Controller {
     public function getSpecificStock(){
         $this->load->model("StockModel");
         
-        $stock = $this->input->post('stockChoice');
+        $stock = $this->input->get('stockChoice');
         
         $query = $this->StockModel->getSpecificStockMovements($stock);
 
@@ -35,6 +35,7 @@ class Stock extends MY_Controller {
             $stockTrans[] = $row;
         }
         
+        $this->data['title'] = $stock;
         $this->data['stockMovements'] = $stockMovements;
         $this->data['stockTrans'] = $stockTrans;
         $this->data['pagebody'] = 'Stock_Single';

@@ -48,8 +48,9 @@ class Portfolio extends MY_Controller {
     
         // Pass the result to the view
         $this->data['stocks'] = $stockResult;
-        $this->data['pagebody'] = 'portfolio_single';
         $this->data['currentHoldings'] = $currentHoldings;
+        $this->data['cash'] = $stockResult[0]->Cash;
+        $this->data['pagebody'] = 'portfolio_single';
         
         $this->render();
     }
