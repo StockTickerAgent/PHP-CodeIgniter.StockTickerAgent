@@ -16,9 +16,15 @@
                 {/stockList}
             </table>
         </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Players</h2>
+            <table>
         </div>
 
-        <div class="col-md-6">
+    <div class="col-md-6">
         <div class="box-group">
             <h3>Players</h3>
             <table class="table table-striped">
@@ -36,6 +42,8 @@
                 {/playerList}
             </table>
         </div>
-        </div>
-  	 </div>
+    </div>
 
+        </div>
+    </div>
+</div>

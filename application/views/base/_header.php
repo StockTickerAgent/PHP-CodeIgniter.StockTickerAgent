@@ -22,6 +22,7 @@
         </select>
       </div>
       <input type="submit" value="Login" class="btn btn-default">
+      <input type="submit" value="Logout" class="btn btn-default">
     </form>
   </div>
 </div>

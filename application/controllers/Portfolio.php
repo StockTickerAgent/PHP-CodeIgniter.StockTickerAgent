@@ -19,40 +19,42 @@ class Portfolio extends MY_Controller {
 	}
 
     public function getSpecificPortfolio($name){
-        $this->load->model("PortfolioModel");
-        $query = $this->PortfolioModel->getSpecificPortfolio($name);
+            $this->load->model("PortfolioModel");
+            $query = $this->PortfolioModel->getSpecificPortfolio($name);
 
-        // Outputs all records to array for easier use
-        $stockResult = array();
-        $currentHoldings = array();
+            // Outputs all records to array for easier use
+            $stockResult = array();
+            $currentHoldings = array();
 
-        foreach($query->result() as $row){
-            $stockResult[] = $row;
+            foreach ($query->result() as $row) {
+                $stockResult[] = $row;
 
-            if($row->Trans == "buy"){
-                if(array_key_exists($row->Stock, $currentHoldings)){
-                    $currentHoldings[$row->Stock]->Quantity += $row->Quantity;
+                if ($row->Trans == "buy") {
+                    if (array_key_exists($row->Stock, $currentHoldings)) {
+                        $currentHoldings[$row->Stock]->Quantity += $row->Quantity;
 
+                    } else {
+                        $currentHoldings[$row->Stock] = clone $row;
+                    }
                 } else {
-                    $currentHoldings[$row->Stock] = clone $row;
-                }
-            } else {
-                if(array_key_exists($row->Stock, $currentHoldings)){
-                    $currentHoldings[$row->Stock]->Quantity -= $row->Quantity;
-                } else {
-                    $currentHoldings[$row->Stock] = clone $row;
-                    $currentHoldings[$row->Stock]->Quantity *= -1;
+                    if (array_key_exists($row->Stock, $currentHoldings)) {
+                        $currentHoldings[$row->Stock]->Quantity -= $row->Quantity;
+                    } else {
+                        $currentHoldings[$row->Stock] = clone $row;
+                        $currentHoldings[$row->Stock]->Quantity *= -1;
+                    }
                 }
             }
-        }
 
-        // Pass the result to the view
-        $this->data['stocks'] = $stockResult;
-        $this->data['currentHoldings'] = $currentHoldings;
-        $this->data['cash'] = $stockResult[0]->Cash;
-        $this->data['pagebody'] = 'portfolio_single';
-        $this->data['name'] = $name;
+            // Pass the result to the view
+            $this->data['stocks'] = $stockResult;
+            $this->data['currentHoldings'] = $currentHoldings;
+            $this->data['cash'] = $stockResult[0]->Cash;
+            $this->data['pagebody'] = 'portfolio_single';
+            $this->data['name'] = $name;
 
-        $this->render();
+            $this->render();
+
+
     }
 }

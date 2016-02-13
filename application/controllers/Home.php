@@ -9,37 +9,23 @@ class Home extends MY_Controller {
     $this->load->model("PortfolioModel");
     $stockQuery = $this->StockModel->getAllStock();
     $playerQuery = $this->PortfolioModel->getAllPortfolio();
-    
-    /*
-    foreach ($query->result() as $row) {
-        $stockResult = $row;
-        $amountQuery = $this->StockModel->totalMovementAmount($stockResult->Code);
-        $amountTotal = array();
-        foreach ($amountQuery->result() as $amountQueryRow) {
-            //$amountTotal += $amountQueryRow->Amount;
-            if()
-        }
-        //echo $stockResult->Code ." " . $amountTotal;
-        //echo "<br />";
-        unset($stockResult);
-    }
-    */
+
     $stockList = array();
-    foreach($stockQuery->result() as $row){
-            $stockList[] = $row;
+    foreach ($stockQuery->result() as $row) {
+      $stockList[] = $row;
     }
-    
+
     $playerList = array();
-    foreach($playerQuery->result() as $row){
-            $playerList[] = $row;
+    foreach ($playerQuery->result() as $row) {
+      $playerList[] = $row;
     }
-    
+
     $this->data['stockList'] = $stockList;
     $this->data['playerList'] = $playerList;
-    $this->data['pagebody'] = 'Home';
-    
-     $this->render();
-    
-  }
 
+    $this->data['pagebody'] = 'Home';
+
+    $this->render();
+
+  }
 }
