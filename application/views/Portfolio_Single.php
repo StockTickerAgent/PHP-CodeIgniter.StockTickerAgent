@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-12">
       <h2>Recent Transactions - {name}</h2>
-      <table>
+      <table class="table table-striped">
         <thead>
           <td>Name</td>
           <td>Value</td>
@@ -24,7 +24,7 @@
   <div class="row">
     <div class="col-md-12">
       <h2>Current Holdings</h2>
-      <table>
+      <table class="table table-striped">
         <thead>
           <td>Name</td>
           <td>Quantity</td>
