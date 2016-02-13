@@ -2,6 +2,11 @@
 All notable changes to this project will be documented to this file.
 Change Log history will be recorded in descending order
 
+## 0.1.4
+** Changed Files **
+- MY_Controller to pass playerlist to data to all pages.
+- when clicking submit on the header it redirects to the portfolio page
+
 ## 0.1.3
 ** Changed Files **
 - autoload, config, login to accept redirect
