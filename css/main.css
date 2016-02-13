@@ -110,8 +110,8 @@ header {
   height: 55px;
   padding: 20px;
   position:absolute;
-  bottom:0;
-  left:0;
+  bottom:0px;
+  left:0px;
 }
 
 #footer a:hover{
