@@ -1,7 +1,13 @@
 <ul class="nav navbar-nav">
-  <li class="active"><a href="/home">Home <span class="sr-only">(current)</span></a></li>
-  <li><a href="/stocks">Stocks</a></li>
-  <li><a href="/portfolio">Portfolio</a></li>
+  <li class="<?php echo active_link('home'); ?>">
+    <a href="/home">Home</a>
+  </li>
+  <li class="<?php echo active_link('Stock'); ?>">
+    <a href="/stocks">Stocks</a>
+  </li>
+  <li class="<?php echo active_link('Portfolio'); ?>">
+    <a href="/portfolio">Portfolio</a>
+  </li>
 </ul>
 <div class="row">
   <form method="POST" action="/login" class="navbar-form navbar-right" role="login">

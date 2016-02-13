@@ -2,6 +2,11 @@
 All notable changes to this project will be documented to this file.
 Change Log history will be recorded in descending order
 
+## 0.2.6
+** Changed Files **
+- Fixed a bug which would stop the highlighted header links from updating if a user wasn't logged in
+- Modified some margins of elements on the header
+
 ## 0.2.5
 ** Changed Files **
 - Modified the look of both Single and All portfolio views to match the style of the rest of the site
