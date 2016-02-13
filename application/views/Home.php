@@ -9,7 +9,7 @@
                 </thead>
                 {stockList}
                 <tr>
-                    <td>{Name}</td>
+                    <td><a href="/stock/getResult?stockChoice={Name}">{Name}</a></td>
                     <td>{Value}</td>
                 </tr>
                 {/stockList}
