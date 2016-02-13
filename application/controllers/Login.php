@@ -14,7 +14,10 @@ class Login extends MY_Controller {
         }
 
         foreach($playerListResult as $row){
-            if($row->Player == )
+            if($row->Player == $_POST['']){
+                $array =
+                $this->session->set_userdata($array);
+            }
         }
         var_dump($playerListResult);
      //   $this->data['pagebody'] = 'portfolio_all';
