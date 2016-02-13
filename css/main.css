@@ -52,6 +52,7 @@ header {
 
   /* Hover, and Static colours for site 'logo' */
   header nav.navbar a.navbar-brand {
+    padding-left: 0;
     color: #e7ebed;
     text-shadow: none;
   }
@@ -86,6 +87,7 @@ header {
 
   /* Change the colour of the logged in text */
   header .navbar-default .navbar-text {
+    margin-right: 0;
     color: #8d9395;
   }
   header .navbar-default .navbar-text a {
@@ -100,6 +102,15 @@ header {
   @media (max-width: 767px) {
     header .navbar-default .navbar-form>.col-xs-10 {
       padding-left: 0;
+    }
+  }
+
+  /* Small Devices, Tablets */
+  @media (min-width : 768px) {
+    /* Modify position of login form */
+    header .navbar-default .navbar-collapse {
+      padding-right: 0;
+      margin-right :0;
     }
   }
 
