@@ -2,6 +2,10 @@
 All notable changes to this project will be documented to this file.
 Change Log history will be recorded in descending order
 
+## 0.2.3
+** Changed Files **
+- Fixed identation for files
+
 ## 0.2.2
 ** Changed Files **
 - If a user is authenticated, the portfolio link the header takes them to their page
