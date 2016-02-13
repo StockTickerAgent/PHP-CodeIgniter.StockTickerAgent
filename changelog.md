@@ -4,8 +4,7 @@ Change Log history will be recorded in descending order
 
 ## 0.2.6
 ** Changed Files **
-- Fixed a bug which would stop the highlighted header links from updating if a user wasn't logged in
-- Modified some margins of elements on the header
+- Modified the look of Single stock view to match the style of the rest of the site
 
 ## 0.2.5
 ** Changed Files **

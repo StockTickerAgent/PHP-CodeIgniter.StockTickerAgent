@@ -1,40 +1,68 @@
 <div id="stocks">
-  <h1>Stock Movements - {title}</h1>
-  <table class="table table-striped">
-    <thead>
-      <td>Date - Time</td>
-      <td>Code</td>
-      <td>Action</td>
-      <td>Amount</td>
-    </thead>
-    {stockMovements}
-      <tr>
-        <td>{Datetime}</td>
-        <td>{Code}</td>
-        <td>{Action}</td>
-        <td>{Amount}</td>
-      </tr>
-    {/stockMovements}
-  </table>
+  <div class="row">
+    <div class="col-md-2 col-sm-4 col-xs-3 pull-right">
+      <form method="GET" action="stocks/getResult" class="form-inline pull-right">
+        <select name="stockChoice" class="form-control">
+          {stockList}
+          <option value="{Name}">{Name}</option>
+          {/stockList}
+        </select>
+        <input type="submit" value="Change" class="btn btn-default">
+      </form>
+    </div>
+    <div class="col-md-10 col-sm-8 col-xs-9">
+      <h2>{title}</h2>
+    </div>
+  </div>
 
-  <h1>Stock Transactions</h1>
-  <table class="table table-striped">
-    <thead>
-      <td>Date - Time</td>
-      <td>Player</td>
-      <td>Stock</td>
-      <td>Transaction</td>
-      <td>Quantity</td>
-    </thead>
-    {stockTrans}
-      <tr>
-        <td>{DateTime}</td>
-        <td>{Player}</td>
-        <td>{Stock}</td>
-        <td>{Trans}</td>
-        <td>{Quantity}</td>
-      </tr>
-      {/stockTrans}
-  </table>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box-group">
+        <h3>Stock Movements</h3>
+        <table class="table table-striped">
+          <thead>
+            <td>Date - Time</td>
+            <td>Code</td>
+            <td>Action</td>
+            <td>Amount</td>
+          </thead>
+          {stockMovements}
+            <tr>
+              <td>{Datetime}</td>
+              <td>{Code}</td>
+              <td>{Action}</td>
+              <td>{Amount}</td>
+            </tr>
+          {/stockMovements}
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box-group">
+        <h3>Stock Transactions</h3>
+        <table class="table table-striped">
+          <thead>
+            <td>Date - Time</td>
+            <td>Player</td>
+            <td>Stock</td>
+            <td>Transaction</td>
+            <td>Quantity</td>
+          </thead>
+          {stockTrans}
+            <tr>
+              <td>{DateTime}</td>
+              <td>{Player}</td>
+              <td>{Stock}</td>
+              <td>{Trans}</td>
+              <td>{Quantity}</td>
+            </tr>
+          {/stockTrans}
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 
