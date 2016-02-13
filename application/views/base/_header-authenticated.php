@@ -1,6 +1,6 @@
 <ul class="nav navbar-nav">
   <li class="<?php echo active_link('home'); ?>">
-    <a href="/home">Home <span class="sr-only">(current)</span></a>
+    <a href="/home">Home</a>
   </li>
   <li class="<?php echo active_link('Stock'); ?>">
     <a href="/stocks">Stocks</a>
