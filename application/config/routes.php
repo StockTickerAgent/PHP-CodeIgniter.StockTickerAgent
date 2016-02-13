@@ -53,11 +53,13 @@ $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+// Log In Routes
+$route["login"] = "Login";
+
 // Portfolio Routes
 $route["portfolio"] = "Portfolio";
-$route["[pP]ortfolio/(:any)"] = "Portfolio/getSpecificPortfolio/$1";
-
-$route["login"] = "Login";
+//$route["[pP]ortfolio/(:any)"] = "Portfolio/getSpecificPortfolio/$1";
+$route["portfolio/getResult"] = "Portfolio/getSpecificPortfolio";
 
 // Stocks Routes
 $route["stock"] = "Stock";

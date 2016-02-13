@@ -5,6 +5,8 @@ class Login extends MY_Controller {
 
     function index(){
         $this->load->model("PortfolioModel");
+        
+        $player = $_POST['playername'];
 
         $playerList = $this->PortfolioModel->getAllPortfolio();
 
@@ -19,7 +21,7 @@ class Login extends MY_Controller {
             }
         }
 
-        //redirect('/portfolio');
+        redirect("/portfolio/getResult?playerChoice=$player");
 
     }
 

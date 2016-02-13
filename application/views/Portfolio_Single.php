@@ -1,7 +1,7 @@
 <div id="portfolio">
   <div class="row">
     <div class="col-md-12">
-      <h2>Recent Transactions</h2>
+      <h2>Recent Transactions - {name}</h2>
       <table>
         <thead>
           <td>Name</td>
