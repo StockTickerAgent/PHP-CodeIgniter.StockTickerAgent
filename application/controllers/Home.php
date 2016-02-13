@@ -36,8 +36,6 @@ class Home extends MY_Controller {
     
     $this->data['stockList'] = $stockList;
     $this->data['playerList'] = $playerList;
-    $this->data['pagebody'] = 'Home';
-    $this->render();
     
   }
 

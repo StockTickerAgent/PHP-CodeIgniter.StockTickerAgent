@@ -13,8 +13,8 @@
     </nav>
   </div>
   <div class="col-md-2">
-    <form method="POST" action="">
-      <select>
+    <form method="POST" action="/login">
+      <select name="playername">
         {playerList}
         <option value="{Player}">{Player}</option>
         {/playerList}
