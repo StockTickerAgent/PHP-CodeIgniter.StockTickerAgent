@@ -1,19 +1,79 @@
 /*==============================*
+ * OVERALL Styling
+ *==============================*/
+html, body {
+  background: #fbfaf9;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  padding: 20px;
+}
+
+body #white-bg {
+  background: #fbfaf9;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100%;
+}
+
+.box-group {
+  background: #FFFFFF;
+  border: 1px solid transparent;
+  margin: 40px 0;
+  padding: 0 10px;
+  -webkit-box-shadow: 0px 2px 2px 0px rgba(235,234,228,1);
+  -moz-box-shadow: 0px 2px 2px 0px rgba(235,234,228,1);
+  box-shadow: 0px 2px 2px 0px rgba(235,234,228,1);
+}
+
+
+/*==============================*
  * HEADER Styling
  *==============================*/
 header {
-  margin: 20px 0;
+  background: #002841;
+  padding: 10px 0;
 }
+  header h4 {
+    margin-top: 11px;
+  }
+  header a {
+    color: #e7ebed;
+  }
+    header a:hover {
+      color: #FFFFFF;
+      text-decoration: none;
+    }
 
-header h1 {
-  margin: 0;
+header nav a {
+  color: #8d9395;
 }
+  header nav a.active,
+  header nav .nav-pills a:hover {
+    background: transparent;
+    color: #e7ebed;
+  }
+  header #login {
+    margin-top: 3px;
+  }
+    header #login .form-group {
+      width: 65%;
+    }
+    header #login .btn {
+      width: 30%;
+    }
+    header #login select {
+      width: 100%;
+    }
 
 
 /*==============================*
  * FOOTER Styling
  *==============================*/
 footer {
+  color: #C2C2C2;
   margin-top: 20px;
 }
 
