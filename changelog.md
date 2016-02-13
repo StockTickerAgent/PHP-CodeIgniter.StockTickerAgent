@@ -2,10 +2,27 @@
 All notable changes to this project will be documented to this file.
 Change Log history will be recorded in descending order
 
+## 0.1.5
+** Added Files **
+- ADDED SQL FILE MUST USE FOR WEBSITE TO WORK
+
+## 0.1.4
+** Changed Files **
+- Created a link between Home page to the portfolio page of the person
+- Changed the portfolio_all to link to the portfolio page of the person
+
+## 0.1.4
+** Changed Files **
+- MY_Controller to pass playerlist to data to all pages.
+- when clicking submit on the header it redirects to the portfolio page
+
+## 0.1.3
+** Changed Files **
+- autoload, config, login to accept redirect
+
 ## 0.1.2
 ** Added Session variable **
 -Created LoginModel, Login Controller
-
 
 ## 0.1.1
 ** Changed Files **

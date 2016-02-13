@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+ob_start();
 class MY_Controller extends CI_Controller {
 
     protected $data = array();      // parameters for view components
@@ -13,8 +13,18 @@ class MY_Controller extends CI_Controller {
     function __construct()
     {
         parent::__construct();
+        $this->load->model("PortfolioModel");
+        
+        $playerList = $this->PortfolioModel->getAllPortfolio();
+        
+        $playerListResult = array();
+        foreach($playerList->result() as $row){
+            $playerListResult[] = $row;
+        }
+        
         $this->data = array();
         $this->data['pagetitle'] = 'Stocks Game';
+        $this->data['playerList'] = $playerListResult;
     }
 
     /**

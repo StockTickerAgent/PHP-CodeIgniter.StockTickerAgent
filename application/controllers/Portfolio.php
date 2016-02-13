@@ -18,14 +18,16 @@ class Portfolio extends MY_Controller {
         $this->render();
 	}
 
-    public function getSpecificPortfolio($person){
+    public function getSpecificPortfolio(){
         $this->load->model("PortfolioModel");
+        $person = $this->input->get('playerChoice');
+        
         $query = $this->PortfolioModel->getSpecificPortfolio($person);
 
         // Outputs all records to array for easier use
         $stockResult = array();
         $currentHoldings = array();
-    
+        
         foreach($query->result() as $row){
             $stockResult[] = $row;
             
@@ -51,6 +53,7 @@ class Portfolio extends MY_Controller {
         $this->data['currentHoldings'] = $currentHoldings;
         $this->data['cash'] = $stockResult[0]->Cash;
         $this->data['pagebody'] = 'portfolio_single';
+        $this->data['name'] = $person;
         
         $this->render();
     }
