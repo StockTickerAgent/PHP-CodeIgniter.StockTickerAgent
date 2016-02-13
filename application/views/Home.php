@@ -1,8 +1,9 @@
-<div id="home">	
+<div id="home">
     <div class="row">
-        <div class="col-md-12">
-            <h2>Stocks</h2>
-            <table>
+        <div class="col-md-6">
+        <div class="box-group">
+            <h3>Stocks</h3>
+            <table class="table table-striped">
                 <thead>
                 <td>Name</td>
                 <td>Value</td>
@@ -15,12 +16,12 @@
                 {/stockList}
             </table>
         </div>
-  	 </div>
-       
-    <div class="row">
-        <div class="col-md-12">
-            <h2>Players</h2>
-            <table>
+        </div>
+
+        <div class="col-md-6">
+        <div class="box-group">
+            <h3>Players</h3>
+            <table class="table table-striped">
                 <thead>
                 <td>Player</td>
                 <td>Cash</td>
@@ -35,6 +36,6 @@
                 {/playerList}
             </table>
         </div>
+        </div>
   	 </div>
-       
-        
+

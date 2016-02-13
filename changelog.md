@@ -2,6 +2,16 @@
 All notable changes to this project will be documented to this file.
 Change Log history will be recorded in descending order
 
+## 0.1.7
+** Changed Files **
+- Added the beginning of major styling to the main.css stylesheet
+- Moved some elements around in the template file
+
+## 0.1.6
+** Changed Files **
+- Login controller redirects to a different url that works with better routing
+- Portfolio controller getSpecificPortfolio takes in the name of a person as the parameter
+
 ## 0.1.5
 ** Added Files **
 - ADDED SQL FILE MUST USE FOR WEBSITE TO WORK
