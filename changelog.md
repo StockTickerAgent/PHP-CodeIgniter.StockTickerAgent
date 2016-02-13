@@ -2,6 +2,22 @@
 All notable changes to this project will be documented to this file.
 Change Log history will be recorded in descending order
 
+## 0.1.0
+** Changed Files **
+- Added three menu buttons to header template view
+
+## 0.0.9
+** Added Files **
+- Stocks Controller & Stocks View
+- Get data from database to the Stocks View.
+- Populated the stocks select list
+
+## 0.0.8
+** Changed Files **
+- Updated _template file to include header and footer views.
+- Replace remote bootstrap and jquery loading with local files
+- Update MY_Controller to load in header and footer into _template file
+
 ## 0.0.7
 ** Changed Files **
 - Updated the Portfolio_Single, Portfolio Controller to show the current holdings of the specific user.

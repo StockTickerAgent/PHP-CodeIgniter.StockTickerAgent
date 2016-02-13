@@ -22,9 +22,15 @@ class MY_Controller extends CI_Controller {
      */
     function render()
     {
+        // Load header and footer templates into base
+        $this->data['header'] = $this->parser->parse('base/_header', $this->data, true);
+        $this->data['footer'] = $this->parser->parse('base/_footer', $this->data, true);
+
+        // Load pagebody view into base template
         $this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
         $this->data['data'] = &$this->data;
-        $this->parser->parse('_template', $this->data);
+
+        $this->parser->parse('base/_template', $this->data);
     }
 
 }
