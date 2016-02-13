@@ -5,15 +5,13 @@ class Home extends MY_Controller {
 
   function index()
   {
-      /*
-    $this->load->model('stocks');
-    $stock= $this->stocks->get_stock();
+/*
+    $this->load->model('stockmodel');
+    $stock= $this->stockmodel->getAllStock();
 
-    foreach($stock->result() as $row)
-      $data[] = $row;
+    $this->data['stock'] = $stock;
+*/
 
-    $this->data['stock'] = $data;
-    */
     $this->data['pagebody'] = 'Home';
     $this->render();
     
