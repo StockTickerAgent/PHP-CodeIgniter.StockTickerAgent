@@ -25,10 +25,6 @@ class MY_Controller extends CI_Controller {
         $this->data = array();
         $this->data['pagetitle'] = 'Stocks Game';
         $this->data['playerList'] = $playerListResult;
-        
-        if(isset($_SESSION['playername'])){
-            echo $_SESSION['playername'];
-        }
     }
 
     /**
