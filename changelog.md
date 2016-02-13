@@ -4,6 +4,11 @@ Change Log history will be recorded in descending order
 
 ## 0.1.4
 ** Changed Files **
+- Created a link between Home page to the portfolio page of the person
+- Changed the portfolio_all to link to the portfolio page of the person
+
+## 0.1.4
+** Changed Files **
 - MY_Controller to pass playerlist to data to all pages.
 - when clicking submit on the header it redirects to the portfolio page
 

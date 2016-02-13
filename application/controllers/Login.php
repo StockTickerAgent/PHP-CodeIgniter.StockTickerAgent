@@ -21,7 +21,7 @@ class Login extends MY_Controller {
             }
         }
 
-        redirect("/portfolio/$player");
+        redirect("/portfolio/getResult?playerChoice=$player");
 
     }
 

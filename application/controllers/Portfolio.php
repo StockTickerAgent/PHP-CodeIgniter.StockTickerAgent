@@ -18,8 +18,10 @@ class Portfolio extends MY_Controller {
         $this->render();
 	}
 
-    public function getSpecificPortfolio($person){
+    public function getSpecificPortfolio(){
         $this->load->model("PortfolioModel");
+        $person = $this->input->get('playerChoice');
+        
         $query = $this->PortfolioModel->getSpecificPortfolio($person);
 
         // Outputs all records to array for easier use
