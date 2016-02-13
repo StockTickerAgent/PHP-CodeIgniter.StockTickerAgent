@@ -2,6 +2,12 @@
 All notable changes to this project will be documented to this file.
 Change Log history will be recorded in descending order
 
+## 0.2.2
+** Changed Files **
+- If a user is authenticated, the portfolio link the header takes them to their page
+** Added Files **
+- Included a helper class that allows the currently page's link to be highlighted in the header bar
+
 ## 0.2.1
 ** Changed Files **
 - Fixed the routing I redirected it to /portfolio/(whatever the stock or name is)

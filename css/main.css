@@ -59,7 +59,7 @@ header {
   header .navbar-default .navbar-nav>.active>a,
   header .navbar-default .navbar-nav>.active>a:hover {
     background: transparent;
-    color: #c4cdd3;
+    color: #FFFFFF;
   }
   header .navbar-default .navbar-nav>li>a {
     background: transparent;
@@ -84,8 +84,12 @@ header {
     color: #8d9395;
   }
   header .navbar-default .navbar-text a {
-    color: #c4cdd3;
+    color: #8d9395;
   }
+    header .navbar-default .navbar-text a:hover {
+      color: #c4cdd3;
+      text-decoration: none;
+    }
 
   /* Small devices (tablets, 768px and up) */
   @media (max-width: 767px) {
