@@ -8,6 +8,16 @@
         <li role="presentation"><a href="/home">Home</a></li>
         <li role="presentation"><a href="/stock">Stocks</a></li>
         <li role="presentation"><a href="/portfolio">Portfolio</a></li>
+        <li role="presentation">
+        <form method="POST" action="">
+            <select>
+              {playerList}
+              <option value="{Player}">{Player}</option>
+              {/playerList}
+            </select>
+            <input type="submit">
+        </form>
+        </li>
       </ul>
     </nav>
   </div>
