@@ -32,10 +32,16 @@ class Stock extends MY_Controller {
         foreach($query->result() as $row){
             $stockTrans[] = $row;
         }
+
+        $stockList = $this->StockModel->getAllStock();
+        foreach($stockList->result() as $row){
+            $stockListResult[] = $row;
+        }
         
         $this->data['title'] = $stock;
         $this->data['stockMovements'] = $stockMovements;
         $this->data['stockTrans'] = $stockTrans;
+        $this->data['stockList'] = $stockListResult;
         $this->data['pagebody'] = 'Stock_Single';
         $this->render();
         
