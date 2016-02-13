@@ -11,17 +11,21 @@ class Home extends MY_Controller {
     $playerQuery = $this->PortfolioModel->getAllPortfolio();
 
     $stockList = array();
-    foreach($stockQuery->result() as $row){
-            $stockList[] = $row;
+    foreach ($stockQuery->result() as $row) {
+      $stockList[] = $row;
     }
-    
+
     $playerList = array();
-    foreach($playerQuery->result() as $row){
-            $playerList[] = $row;
+    foreach ($playerQuery->result() as $row) {
+      $playerList[] = $row;
     }
-    
+
     $this->data['stockList'] = $stockList;
     $this->data['playerList'] = $playerList;
-  }
 
+    $this->data['pagebody'] = 'Home';
+
+    $this->render();
+
+  }
 }
