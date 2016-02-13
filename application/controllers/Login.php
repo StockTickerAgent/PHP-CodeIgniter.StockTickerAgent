@@ -19,7 +19,7 @@ class Login extends MY_Controller {
             }
         }
 
-        redirect('/portfolio');
+        //redirect('/portfolio');
 
     }
 
