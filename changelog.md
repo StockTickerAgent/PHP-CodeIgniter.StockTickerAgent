@@ -2,6 +2,10 @@
 All notable changes to this project will be documented to this file.
 Change Log history will be recorded in descending order
 
+## 0.1.1
+** Changed Files **
+-Added login content to the header template view
+
 ## 0.1.0
 ** Changed Files **
 - Added three menu buttons to header template view
