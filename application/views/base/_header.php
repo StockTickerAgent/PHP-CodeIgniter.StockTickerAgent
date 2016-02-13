@@ -13,14 +13,7 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="/home">Home <span class="sr-only">(current)</span></a></li>
-        <li><a href="/stocks">Stocks</a></li>
-        <li><a href="/portfolio">Portfolio</a></li>
-      </ul>
-      <div class="row">
-        {authenticate}
-      </div>
+      {authenticate}
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
