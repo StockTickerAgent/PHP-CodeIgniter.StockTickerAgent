@@ -2,6 +2,9 @@
 All notable changes to this project will be documented to this file.
 Change Log history will be recorded in descending order
 
+## 0.2.0
+- Update the header to change depending on whether a user is logged in or not
+
 ## 0.1.10
 ** Changed Files **
 - Added table striped-style to Stock and Portfolio views

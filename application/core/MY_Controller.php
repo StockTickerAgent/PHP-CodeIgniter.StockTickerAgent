@@ -14,17 +14,23 @@ class MY_Controller extends CI_Controller {
     {
         parent::__construct();
         $this->load->model("PortfolioModel");
-        
+
         $playerList = $this->PortfolioModel->getAllPortfolio();
-        
+
         $playerListResult = array();
         foreach($playerList->result() as $row){
             $playerListResult[] = $row;
         }
-        
+
         $this->data = array();
         $this->data['pagetitle'] = 'Stocks Game';
         $this->data['playerList'] = $playerListResult;
+
+        // Send the user session
+        $session_id = $this->session->userdata('playername');
+        if ($session_id) {
+            $this->data['username'] = $session_id;
+        }
     }
 
     /**
@@ -32,6 +38,13 @@ class MY_Controller extends CI_Controller {
      */
     function render()
     {
+        // Load the header authentication section
+        if (isset($this->data['username'])) {
+            $this->data['authenticate'] = $this->parser->parse('base/_header-authenticated', $this->data, true);
+        } else {
+            $this->data['authenticate'] = $this->parser->parse('base/_header-guest', $this->data, true);
+        }
+
         // Load header and footer templates into base
         $this->data['header'] = $this->parser->parse('base/_header', $this->data, true);
         $this->data['footer'] = $this->parser->parse('base/_footer', $this->data, true);

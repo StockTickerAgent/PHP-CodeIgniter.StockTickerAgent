@@ -79,6 +79,14 @@ header {
     border: 0;
   }
 
+  /* Change the colour of the logged in text */
+  header .navbar-default .navbar-text {
+    color: #8d9395;
+  }
+  header .navbar-default .navbar-text a {
+    color: #c4cdd3;
+  }
+
   /* Small devices (tablets, 768px and up) */
   @media (max-width: 767px) {
     header .navbar-default .navbar-form>.col-xs-10 {
