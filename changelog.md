@@ -2,6 +2,11 @@
 All notable changes to this project will be documented to this file.
 Change Log history will be recorded in descending order
 
+## 0.2.1
+** Changed Files **
+- Fixed the routing I redirected it to /portfolio/(whatever the stock or name is)
+- added functions in the controller to handle it
+
 ## 0.2.0
 - Update the header to change depending on whether a user is logged in or not
 

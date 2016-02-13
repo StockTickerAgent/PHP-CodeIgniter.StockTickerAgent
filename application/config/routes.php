@@ -61,8 +61,10 @@ $route["logout"] = "Logout";
 
 // Portfolio Routes
 $route["portfolio"] = "Portfolio";
+$route["portfolio/getResult"] = "Portfolio/formSpecificPortfolio";
 $route["[pP]ortfolio/(:any)"] = "Portfolio/getSpecificPortfolio/$1";
 
 // Stocks Routes
 $route["stocks"] = "Stock";
-$route["stocks/getResult"] = "Stock/getSpecificStock";
+$route["stocks/getResult"] = "Stock/formSpecificStock";
+$route["[sS]tocks/(:any)"] = "Stock/getSpecificPortfolio/$1";
