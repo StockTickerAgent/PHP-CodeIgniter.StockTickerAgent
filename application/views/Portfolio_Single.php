@@ -27,20 +27,20 @@
       <table>
         <thead>
           <td>Name</td>
-          <td>Value</td>
-          <td>Type</td>
           <td>Quantity</td>
         </thead>
         {currentHoldings}
           <tr>
             <td>{Stock}</td>
-            <td>{Cash}</td>
-            <td>{Trans}</td>
             <td>{Quantity}</td>
           </tr>
           {/currentHoldings}
       </table>
     </div>
+  </div>
+  
+  <div class="row">
+      <h5>Current Cash: {cash} (Assuming the players database Cash value is the final amount after all the transactions)</h5>
   </div>
 </div>
 

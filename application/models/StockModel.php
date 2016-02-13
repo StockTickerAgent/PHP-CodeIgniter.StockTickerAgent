@@ -34,5 +34,16 @@ class StockModel extends CI_Model {
  
         return $query;
    }
+   
+   public function totalMovementAmount($stock){
+        $this->load->database();
+        $this->db->select('*');
+        $this->db->from('movements');
+        $this->db->where('movements.Code', $stock);
+        $query = $this->db->get();
+ 
+        return $query;
+   }
+   
 
 }

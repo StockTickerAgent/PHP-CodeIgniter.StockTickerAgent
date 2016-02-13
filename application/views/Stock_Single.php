@@ -1,5 +1,5 @@
 <div id="stocks">
-  <h1>Stock Movements</h1>
+  <h1>Stock Movements - {title}</h1>
   <table>
     <thead>
       <td>Date - Time</td>
