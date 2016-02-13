@@ -56,6 +56,9 @@ $route['translate_uri_dashes'] = FALSE;
 // Log In Routes
 $route["login"] = "Login";
 
+//Log out
+$route["logout"] = "Logout";
+
 // Portfolio Routes
 $route["portfolio"] = "Portfolio";
 //$route["[pP]ortfolio/(:any)"] = "Portfolio/getSpecificPortfolio/$1";
