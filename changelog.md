@@ -2,9 +2,22 @@
 All notable changes to this project will be documented to this file.
 Change Log history will be recorded in descending order
 
+## 0.2.6
+** Changed Files **
+- Modified the look of Single stock view to match the style of the rest of the site
+
+## 0.2.5
+** Changed Files **
+- Modified the look of both Single and All portfolio views to match the style of the rest of the site
+
+## 0.2.4
+** Changed Files **
+- Modified how the footer was pinned to the bottom of the page.
+- Added some space at the bottom of the page so that the content isn't stuck behind the footer when the user scrolls to the bottom
+
 ## 0.2.3
 ** Changed Files **
-- Fixed identation for files
+- Footer is now pinned to bottom of page.
 
 ## 0.2.2
 ** Changed Files **

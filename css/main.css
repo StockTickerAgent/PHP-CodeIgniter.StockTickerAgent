@@ -21,11 +21,16 @@ body #white-bg {
 .box-group {
   background: #FFFFFF;
   border: 1px solid transparent;
-  margin: 40px 0;
-  padding: 0 10px;
+  padding: 10px 10px;
+  margin: 10px 0;
   -webkit-box-shadow: 0px 2px 2px 0px rgba(235,234,228,1);
   -moz-box-shadow: 0px 2px 2px 0px rgba(235,234,228,1);
   box-shadow: 0px 2px 2px 0px rgba(235,234,228,1);
+}
+
+#content {
+  margin-top: 20px;
+  margin-bottom: 80px;
 }
 
 
@@ -47,6 +52,7 @@ header {
 
   /* Hover, and Static colours for site 'logo' */
   header nav.navbar a.navbar-brand {
+    padding-left: 0;
     color: #e7ebed;
     text-shadow: none;
   }
@@ -81,6 +87,7 @@ header {
 
   /* Change the colour of the logged in text */
   header .navbar-default .navbar-text {
+    margin-right: 0;
     color: #8d9395;
   }
   header .navbar-default .navbar-text a {
@@ -98,23 +105,32 @@ header {
     }
   }
 
+  /* Small Devices, Tablets */
+  @media (min-width : 768px) {
+    /* Modify position of login form */
+    header .navbar-default .navbar-collapse {
+      padding-right: 0;
+      margin-right :0;
+    }
+  }
+
 
 /*==============================*
  * FOOTER Styling
  *==============================*/
-#footer {
+footer {
   color: #262626;
   background-color: #e6e6e6;
   text-align:center;
-  width:100%;
   height: 55px;
   padding: 20px;
-  position:absolute;
-  bottom:0;
-  left:0;
+  position: fixed;
+  bottom: 0px;
+  left: 20px;
+  right: 20px;
 }
 
-#footer a:hover{
+footer a:hover{
   color: white;
 }
 
@@ -141,3 +157,9 @@ header {
 #portfolio {
 
 }
+  #portfolio #user-select {
+    margin-top: 20px;
+  }
+  #portfolio #player-list {
+    margin-top: 10px;
+  }
