@@ -2,6 +2,10 @@
 All notable changes to this project will be documented to this file.
 Change Log history will be recorded in descending order
 
+## 0.1.5
+** Added Files **
+- ADDED SQL FILE MUST USE FOR WEBSITE TO WORK
+
 ## 0.1.4
 ** Changed Files **
 - Created a link between Home page to the portfolio page of the person
