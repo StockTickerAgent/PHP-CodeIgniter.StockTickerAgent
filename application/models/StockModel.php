@@ -45,5 +45,14 @@ class StockModel extends CI_Model {
         return $query;
    }
    
+    public function getRecentMovement(){
+      $this->load->database();
+      $this->db->select('*');
+      $this->db->from('movements');
+      $query = $this->db->get();
+ 
+      return $query;
+   }
+   
 
 }

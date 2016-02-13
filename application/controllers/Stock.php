@@ -12,10 +12,14 @@ class Stock extends MY_Controller
     foreach ($stockList->result() as $row) {
       $stockListResult[] = $row;
     }
+    
+    $stockRecent = $this->StockModel->getRecentMovement();
+    foreach ($stockRecent->result() as $row) {
+      $stockRecentResult[] = $row;
+    }
 
-    $this->data['stockList'] = $stockListResult;
-    $this->data['pagebody'] = 'Stock_All';
-    $this->render();
+    $row = $stockRecentResult[count($stockRecentResult) - 1];
+    $this->getSpecificPortfolio($row->Code);
   }
 
   public function getSpecificPortfolio($stock)
@@ -40,13 +44,10 @@ class Stock extends MY_Controller
     $this->data['stockTrans'] = $stockTrans;
     $this->data['pagebody'] = 'Stock_Single';
     $this->render();
-
   }
 
   public function formSpecificStock()
   {
-    //$this->getSpecificPortfolio($this->input->get('playerChoice'));
-    //echo "HI";
     $stock = $this->input->get('stockChoice');
     redirect("stocks/$stock");
   }
