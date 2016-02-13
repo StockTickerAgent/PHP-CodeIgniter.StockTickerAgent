@@ -7,7 +7,7 @@ class Logout extends MY_Controller {
     {
         $this->session->unset_userdata('playername');
         $this->session->sess_destroy();
-        redirect('logout');
+        redirect('/home');
     }
 
 }

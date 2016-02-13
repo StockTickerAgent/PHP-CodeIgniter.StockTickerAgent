@@ -13,18 +13,22 @@ if (!defined('APPPATH'))
     <link rel="stylesheet" type="text/css" href="/css/main.css">
 </head>
 <body>
-  <div class="container">
+  <div id="white-bg">
     <header>
-      {header}
+      <div class="container">
+        {header}
+      </div>
     </header>
 
-    <section id="content">
-      {content}
-    </section>
+    <div class="container">
+      <section id="content">
+        {content}
+      </section>
 
-    <footer>
-      {footer}
-    </footer>
+      <footer>
+        {footer}
+      </footer>
+    </div>
   </div>
 
   <script src="/js/jquery-2.2.0.min.js"></script>

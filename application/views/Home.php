@@ -1,8 +1,9 @@
 <div id="home">
     <div class="row">
-        <div class="col-md-12">
-            <h2>Stocks</h2>
-            <table>
+        <div class="col-md-6">
+        <div class="box-group">
+            <h3>Stocks</h3>
+            <table class="table table-striped">
                 <thead>
                 <td>Name</td>
                 <td>Value</td>
@@ -21,6 +22,12 @@
         <div class="col-md-12">
             <h2>Players</h2>
             <table>
+        </div>
+
+    <div class="col-md-6">
+        <div class="box-group">
+            <h3>Players</h3>
+            <table class="table table-striped">
                 <thead>
                 <td>Player</td>
                 <td>Cash</td>
@@ -36,5 +43,7 @@
             </table>
         </div>
     </div>
-       
-        
+
+        </div>
+    </div>
+</div>
