@@ -1,5 +1,5 @@
 <div id="stocks">
-  <form method="GET" action="stock/getResult">
+  <form method="GET" action="stocks/getResult">
   	<select name="stockChoice">
           {stockList}
           <option value="{Name}">{Name}</option>

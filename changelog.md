@@ -2,10 +2,16 @@
 All notable changes to this project will be documented to this file.
 Change Log history will be recorded in descending order
 
+## 0.1.9
+** Changed Files **
+- Update the header styling in main.css
+- Change the layout of the header in the _header.php template
+- Modified the Stock(s) route to make it plural
+
 ## 0.1.8
 ** Changed Files **
--Added logout controller
--modified header to add logout button
+- Added logout controller
+- modified header to add logout button
 
 ## 0.1.7
 ** Changed Files **

@@ -36,37 +36,55 @@ header {
   background: #002841;
   padding: 10px 0;
 }
-  header h4 {
-    margin-top: 11px;
+  /* Remove background and border from bootstraps navbar */
+  header nav.navbar-default,
+  header nav.navbar-collapse {
+    background: transparent;
+    border: 0 transparent;
+    margin: 0;
+    box-shadow: none;
   }
-  header a {
+
+  /* Hover, and Static colours for site 'logo' */
+  header nav.navbar a.navbar-brand {
     color: #e7ebed;
+    text-shadow: none;
   }
-    header a:hover {
+    header nav.navbar a.navbar-brand:hover {
       color: #FFFFFF;
       text-decoration: none;
     }
 
-header nav a {
-  color: #8d9395;
-}
-  header nav a.active,
-  header nav .nav-pills a:hover {
+  /* Active, Hover, and Static colours for page links */
+  header .navbar-default .navbar-nav>.active>a,
+  header .navbar-default .navbar-nav>.active>a:hover {
     background: transparent;
-    color: #e7ebed;
+    color: #c4cdd3;
   }
-  header #login {
-    margin-top: 3px;
+  header .navbar-default .navbar-nav>li>a {
+    background: transparent;
+    color: #8d9395;
+    text-shadow: none;
   }
-    header #login .form-group {
-      width: 65%;
+  header .navbar-default .navbar-nav>li>a:hover {
+    color: #c4cdd3;
+  }
+
+  /* Style the mobile menu horizontal lines */
+  header .navbar-default .navbar-collapse {
+    border: 0;
+    border-top: 1px solid #26485d;
+  }
+  header .navbar-default .navbar-collapse, .navbar-default .navbar-form  {
+    border: 0;
+  }
+
+  /* Small devices (tablets, 768px and up) */
+  @media (max-width: 767px) {
+    header .navbar-default .navbar-form>.col-xs-10 {
+      padding-left: 0;
     }
-    header #login .btn {
-      width: 30%;
-    }
-    header #login select {
-      width: 100%;
-    }
+  }
 
 
 /*==============================*
