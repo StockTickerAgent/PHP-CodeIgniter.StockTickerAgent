@@ -5,7 +5,6 @@ class Home extends MY_Controller {
 
   function index()
   {
-
     $this->load->model("StockModel");
     $this->load->model("PortfolioModel");
     $stockQuery = $this->StockModel->getAllStock();
