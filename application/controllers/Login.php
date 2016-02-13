@@ -1,27 +1,29 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Login extends MY_Controller {
+class Login extends MY_Controller
+{
 
-    function index(){
-        $this->load->model("PortfolioModel");
+  function index()
+  {
+    $this->load->model("PortfolioModel");
 
-        $player = $_POST['playername'];
+    $player = $_POST['playername'];
 
-        $playerList = $this->PortfolioModel->getAllPortfolio();
+    $playerList = $this->PortfolioModel->getAllPortfolio();
 
-        $playerListResult = array();
-        foreach($playerList->result() as $row){
-            $playerListResult[] = $row;
-        }
-
-        foreach($playerListResult as $row){
-            if($row->Player == $_POST['playername']){
-                $this->session->set_userdata('playername', $_POST['playername']);
-            }
-        }
-
-        redirect("/portfolio/$player");
+    $playerListResult = array();
+    foreach ($playerList->result() as $row) {
+      $playerListResult[] = $row;
     }
+
+    foreach ($playerListResult as $row) {
+      if ($row->Player == $_POST['playername']) {
+        $this->session->set_userdata('playername', $_POST['playername']);
+      }
+    }
+
+    redirect("/portfolio/$player");
+  }
 
 }

@@ -3,8 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends MY_Controller {
 
-  function index()
-  {
+  function index() {
     $this->load->model("StockModel");
     $this->load->model("PortfolioModel");
     $stockQuery = $this->StockModel->getAllStock();
@@ -26,6 +25,5 @@ class Home extends MY_Controller {
     $this->data['pagebody'] = 'Home';
 
     $this->render();
-
   }
 }
