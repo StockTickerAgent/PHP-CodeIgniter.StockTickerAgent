@@ -64,5 +64,5 @@ $route["portfolio"] = "Portfolio";
 $route["[pP]ortfolio/(:any)"] = "Portfolio/getSpecificPortfolio/$1";
 
 // Stocks Routes
-$route["stock"] = "Stock";
-$route["stock/getResult"] = "Stock/getSpecificStock";
+$route["stocks"] = "Stock";
+$route["stocks/getResult"] = "Stock/getSpecificStock";
