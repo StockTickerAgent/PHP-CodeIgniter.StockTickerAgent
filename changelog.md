@@ -2,6 +2,10 @@
 All notable changes to this project will be documented to this file.
 Change Log history will be recorded in descending order
 
+## 0.1.8
+** Changed Files **
+- Added table striped-style to Stock and Portfolio views
+
 ## 0.1.7
 ** Changed Files **
 - Added the beginning of major styling to the main.css stylesheet
