@@ -21,6 +21,7 @@ class Home extends MY_Controller {
       $playerList[] = $row;
     }
 
+    $this->data['pagetitle'] = 'Welcome to the Stocks Game';
     $this->data['stockList'] = $stockList;
     $this->data['playerList'] = $playerList;
     $this->data['pagebody'] = 'Home';
