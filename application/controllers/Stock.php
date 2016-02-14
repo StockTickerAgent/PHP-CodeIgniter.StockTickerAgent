@@ -11,11 +11,14 @@ class Stock extends MY_Controller {
          foreach($stockList->result() as $row){
             $stockListResult[] = $row;
         }
-        
-        $this->data['stockList'] = $stockListResult;
-        $this->data['pagebody'] = 'Stock_All';
-        $this->render();
-    }     
+        $stockRecent = $this->StockModel->getRecentMovement();
+        foreach ($stockRecent->result() as $row) {
+          $stockRecentResult[] = $row;
+        }
+
+        $row = $stockRecentResult[count($stockRecentResult) - 1];
+        $this->getSpecificPortfolio($row->Code);
+  } 	    
     
     public function getSpecificPortfolio($stock){
         $this->load->model("StockModel");
@@ -43,17 +46,14 @@ class Stock extends MY_Controller {
         $this->data['stockTrans'] = $stockTrans;
         $this->data['stockList'] = $stockListResult;
         $this->data['pagebody'] = 'Stock_Single';
-        $this->render();
-        
-    }    
-    
-    public function formSpecificStock(){
-        //$this->getSpecificPortfolio($this->input->get('playerChoice'));
-        //echo "HI";
-        $stock = $this->input->get('stockChoice');
-        redirect("stocks/$stock");
+        $this->render();      
     }
-            
-        
+
+  public function formSpecificStock()
+  {
+    $stock = $this->input->get('stockChoice');
+    redirect("stocks/$stock");
+  }
+
 
 }

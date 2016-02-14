@@ -4,6 +4,11 @@ Change Log history will be recorded in descending order
 
 ## 0.2.6
 ** Changed Files **
+- Changed the model to get all the recent movements of the stocks 
+- Changed the stock controllers index function get all the movements and gets information about the stock
+
+## 0.2.6
+** Changed Files **
 - Modified the look of Single stock view to match the style of the rest of the site
 
 ## 0.2.5
