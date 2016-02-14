@@ -2,6 +2,11 @@
 All notable changes to this project will be documented to this file.
 Change Log history will be recorded in descending order
 
+## 0.2.7
+** Changed Files **
+- Changed both Stocks_Single and Portfolio_Single views to display the selection form better
+- Modified main stylesheet to reflect changes made to the views
+
 ## 0.2.6
 ** Changed Files **
 - Changed the model to get all the recent movements of the stocks 
