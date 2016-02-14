@@ -55,11 +55,14 @@ class MY_Controller extends CI_Controller {
 
         $this->parser->parse('base/_template', $this->data);
     }
-    
-    function checkValid($temp_model,$item){
+
+    //validate input
+    function checkValid($temp_model,$item)
+    {
       $model = "";
       
-      if($temp_model == "stock"){
+      if($temp_model == "stock")
+      {
         $model = "StockModel";
       } else {
         $model = "PortfolioModel";
@@ -71,8 +74,8 @@ class MY_Controller extends CI_Controller {
       return $valid;
     }
     
-    function error404(){
-      
+    function error404()
+    {
     }
 
 }
