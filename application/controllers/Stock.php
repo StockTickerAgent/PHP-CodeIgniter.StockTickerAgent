@@ -7,7 +7,7 @@ class Stock extends MY_Controller {
 	public function index()
 	{
         $this->load->model("StockModel");
-        
+
         $stockList = $this->StockModel->getAllStock();
         foreach($stockList->result() as $row)
         {
@@ -26,12 +26,11 @@ class Stock extends MY_Controller {
     public function getSpecificPortfolio($stock)
     {
         $this->load->model("StockModel");
-        
+
         $result = $this->checkValid("stock",$stock);
         if(!$result){
-          //echo "h";
-          $this->data['pagebody'] = 'Error';
-          $this->data['title'] = 'Stock Not Found';
+          $this->output->set_status_header('404'); // setting header to 404
+          $this->data['pagebody'] = 'Error_404';
           $this->render();
         } else {
           $query = $this->StockModel->getSpecificStockMovements($stock);
@@ -40,7 +39,7 @@ class Stock extends MY_Controller {
           foreach($query->result() as $row){
               $stockMovements[] = $row;
           }
-          
+
           $query = $this->StockModel->getSpecificStockTrans($stock);
           $stockTrans = array();
           foreach($query->result() as $row){
@@ -51,14 +50,14 @@ class Stock extends MY_Controller {
           foreach($stockList->result() as $row){
               $stockListResult[] = $row;
           }
-          
+
           $this->data['title'] = $stock;
           $this->data['stockMovements'] = $stockMovements;
           $this->data['stockTrans'] = $stockTrans;
           $this->data['stockList'] = $stockListResult;
           $this->data['pagebody'] = 'Stock_Single';
-          $this->render();  
-        } 
+          $this->render();
+        }
     }
 
     //get stockChoice from the form

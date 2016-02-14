@@ -27,8 +27,8 @@ class Portfolio extends MY_Controller {
         $result = $this->checkValid("portfolio",$name);
 
         if(!$result){
-          $this->data['pagebody'] = 'Error';
-          $this->data['title'] = 'Player Not Found!';
+          $this->output->set_status_header('404'); // setting header to 404
+          $this->data['pagebody'] = 'Error_404';
           $this->render();
         } else {
 

@@ -2,6 +2,11 @@
 All notable changes to this project will be documented to this file.
 Change Log history will be recorded in descending order
 
+## 0.9.0
+** Changed Files **
+- Updated the look of the error page for stocks and portfolios
+- Changed the default 404 page for any other invalid pages
+
 ## 0.2.9
 ** Changed Files **
 - Modified the Portfolio and Stock views to bold the title
