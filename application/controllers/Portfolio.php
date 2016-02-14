@@ -19,8 +19,16 @@ class Portfolio extends MY_Controller {
 	}
 
     public function getSpecificPortfolio($name){
-            $this->load->model("PortfolioModel");
-            $query = $this->PortfolioModel->getSpecificPortfolio($name);
+      	    $this->load->model("PortfolioModel");
+            $result = $this->checkValid("portfolio",$name);
+ 
+            if(!$result){
+              $this->data['pagebody'] = 'Error';
+              $this->data['title'] = 'Player Not Found!';
+              $this->render();  
+            } else {
+            
+              $query = $this->PortfolioModel->getSpecificPortfolio($name);
 
             // Outputs all records to array for easier use
             $stockResult = array();
@@ -54,6 +62,7 @@ class Portfolio extends MY_Controller {
             $this->data['name'] = $name;
 
             $this->render();
+            }
     }
 
     public function formSpecificPortfolio(){

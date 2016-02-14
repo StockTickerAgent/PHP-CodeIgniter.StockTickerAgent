@@ -29,5 +29,15 @@ class PortfolioModel extends CI_Model {
         return $query;
     }
     
+    function isValid($playerName){
+      $listPeople = $this->getAllPortfolio();
+      foreach($listPeople->result() as $row){
+        if($row->Player == $playerName){
+          return true;
+        }
+      }
+      return false;
+    }
+    
 
 }

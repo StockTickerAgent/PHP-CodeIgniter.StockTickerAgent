@@ -54,5 +54,15 @@ class StockModel extends CI_Model {
       return $query;
    }
    
+   function isValid($stock){
+      $listStock = $this->getAllStock();
+      foreach($listStock->result() as $row){
+        if($row->Name == $stock || $row->Code == $stock){
+          return true;
+        }
+      }
+      return false;
+   }
+   
 
 }
