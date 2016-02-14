@@ -54,7 +54,7 @@
           {stockTrans}
             <tr>
               <td>{DateTime}</td>
-              <td>{Player}</td>
+              <td><a href="/portfolio/{Player}">{Player}</a></td>
               <td>{Stock}</td>
               <td>{Trans}</td>
               <td>{Quantity}</td>
