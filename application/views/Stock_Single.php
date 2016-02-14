@@ -11,7 +11,7 @@
       </form>
     </div>
     <div class="col-sm-8">
-      <h2>{title}</h2>
+      <h2><b>{title}</b></h2>
     </div>
   </div>
 

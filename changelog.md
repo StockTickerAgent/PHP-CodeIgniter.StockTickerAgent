@@ -2,6 +2,10 @@
 All notable changes to this project will be documented to this file.
 Change Log history will be recorded in descending order
 
+## 0.2.9
+** Changed Files **
+- Modified the Portfolio and Stock views to bold the title
+
 ## 0.2.8
 ** Added Files **
 - Added an Error view
