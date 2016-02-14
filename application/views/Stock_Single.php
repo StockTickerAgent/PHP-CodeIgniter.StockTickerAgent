@@ -1,7 +1,7 @@
 <div id="stocks">
   <div class="row">
-    <div class="col-md-2 col-sm-4 col-xs-3 pull-right">
-      <form method="GET" action="stocks/getResult" class="form-inline pull-right">
+    <div class="col-sm-4 pull-right">
+      <form method="GET" id="stock-select" action="stocks/getResult" class="form-inline pull-right">
         <select name="stockChoice" class="form-control">
           {stockList}
           <option value="{Name}">{Name}</option>
@@ -10,7 +10,7 @@
         <input type="submit" value="Change" class="btn btn-default">
       </form>
     </div>
-    <div class="col-md-10 col-sm-8 col-xs-9">
+    <div class="col-sm-8">
       <h2>{title}</h2>
     </div>
   </div>
@@ -54,7 +54,7 @@
           {stockTrans}
             <tr>
               <td>{DateTime}</td>
-              <td>{Player}</td>
+              <td><a href="/portfolio/{Player}">{Player}</a></td>
               <td>{Stock}</td>
               <td>{Trans}</td>
               <td>{Quantity}</td>

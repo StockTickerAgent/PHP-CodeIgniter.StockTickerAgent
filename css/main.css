@@ -149,6 +149,27 @@ footer a:hover{
 #stocks {
 
 }
+  #stocks #stock-select {
+    margin-top: 20px;
+  }
+  #stocks #stock-select .form-control {
+    margin-right: 10px;
+  }
+
+  @media (max-width: 767px) {
+    #stocks #stock-select .form-control {
+      display: inline;
+      position: relative;
+      z-index: 1;
+    }
+    #stocks #stock-select .btn {
+      display: inline;
+      position: relative;
+      z-index: 1;
+      margin-top: 5px;
+      float: right;
+    }
+  }
 
 
 /*==============================*
@@ -162,4 +183,22 @@ footer a:hover{
   }
   #portfolio #player-list {
     margin-top: 10px;
+  }
+  #portfolio #user-select .form-control {
+    margin-right: 10px;
+  }
+
+  @media (max-width: 767px) {
+    #portfolio #user-select .form-control {
+      display: inline;
+      position: relative;
+      z-index: 1;
+    }
+    #portfolio #user-select .btn {
+      display: inline;
+      position: relative;
+      z-index: 1;
+      margin-top: 5px;
+      float: right;
+    }
   }
