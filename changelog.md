@@ -2,6 +2,12 @@
 All notable changes to this project will be documented to this file.
 Change Log history will be recorded in descending order
 
+## 1.0
+- Fully function way of viewing stocks and player portfolio data from a database
+
+** Changed Files **
+- Update all controllers to show an updated html title based on the page info
+
 ## 0.9.0
 ** Changed Files **
 - Updated the look of the error page for stocks and portfolios
