@@ -3,24 +3,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Stock extends MY_Controller {
 
+    //load data from model and display all detail
 	public function index()
 	{
         $this->load->model("StockModel");
         
         $stockList = $this->StockModel->getAllStock();
-         foreach($stockList->result() as $row){
-            $stockListResult[] = $row;
+        foreach($stockList->result() as $row)
+        {
+           $stockListResult[] = $row;
         }
         $stockRecent = $this->StockModel->getRecentMovement();
-        foreach ($stockRecent->result() as $row) {
+        foreach ($stockRecent->result() as $row)
+        {
           $stockRecentResult[] = $row;
         }
-
         $row = $stockRecentResult[count($stockRecentResult) - 1];
         $this->getSpecificPortfolio($row->Code);
-  } 	    
-    
-    public function getSpecificPortfolio($stock){
+    }
+
+    //get specific data for a certain player
+    public function getSpecificPortfolio($stock)
+    {
         $this->load->model("StockModel");
         
         $result = $this->checkValid("stock",$stock);
@@ -28,8 +32,7 @@ class Stock extends MY_Controller {
           //echo "h";
           $this->data['pagebody'] = 'Error';
           $this->data['title'] = 'Stock Not Found';
-          $this->render();  
-      
+          $this->render();
         } else {
           $query = $this->StockModel->getSpecificStockMovements($stock);
 
@@ -58,11 +61,10 @@ class Stock extends MY_Controller {
         } 
     }
 
-  public function formSpecificStock()
-  {
-    $stock = $this->input->get('stockChoice');
-    redirect("stocks/$stock");
-  }
-
-
+    //get stockChoice from the form
+    public function formSpecificStock()
+    {
+        $stock = $this->input->get('stockChoice');
+        redirect("stocks/$stock");
+    }
 }

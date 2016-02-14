@@ -14,6 +14,7 @@ class LoginModel extends CI_Model
         parent::__construct();
     }
 
+    //grab player data from database
     function login($person)
     {
         $this->load->database();
