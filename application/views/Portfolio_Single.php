@@ -1,6 +1,6 @@
 <div id="portfolio">
   <div class="row">
-    <div class="col-md-2 col-sm-4 col-xs-3 pull-right">
+    <div class="col-sm-4 pull-right">
       <form method="GET" id="user-select" action="/portfolio/getResult" class="form-inline pull-right">
         <select name="playerChoice" class="form-control">
             {playerList}
@@ -10,7 +10,7 @@
           <input type="submit" value="Change" class="btn btn-default">
       </form>
     </div>
-    <div class="col-md-10 col-sm-8 col-xs-9">
+    <div class="col-sm-8">
       <h2>{name}</h2>
       <p class="lead">Current Cash: {cash} <small>(Assuming the players database Cash value is the final amount after all the transactions)</small></p>
     </div>
