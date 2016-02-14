@@ -23,30 +23,39 @@ class Stock extends MY_Controller {
     public function getSpecificPortfolio($stock){
         $this->load->model("StockModel");
         
-        $query = $this->StockModel->getSpecificStockMovements($stock);
+        $result = $this->checkValid("stock",$stock);
+        if(!$result){
+          //echo "h";
+          $this->data['pagebody'] = 'Error';
+          $this->data['title'] = 'Stock Not Found';
+          $this->render();  
+      
+        } else {
+          $query = $this->StockModel->getSpecificStockMovements($stock);
 
-        $stockMovements = array();
-        foreach($query->result() as $row){
-            $stockMovements[] = $row;
-        }
-        
-        $query = $this->StockModel->getSpecificStockTrans($stock);
-        $stockTrans = array();
-        foreach($query->result() as $row){
-            $stockTrans[] = $row;
-        }
+          $stockMovements = array();
+          foreach($query->result() as $row){
+              $stockMovements[] = $row;
+          }
+          
+          $query = $this->StockModel->getSpecificStockTrans($stock);
+          $stockTrans = array();
+          foreach($query->result() as $row){
+              $stockTrans[] = $row;
+          }
 
-        $stockList = $this->StockModel->getAllStock();
-        foreach($stockList->result() as $row){
-            $stockListResult[] = $row;
-        }
-        
-        $this->data['title'] = $stock;
-        $this->data['stockMovements'] = $stockMovements;
-        $this->data['stockTrans'] = $stockTrans;
-        $this->data['stockList'] = $stockListResult;
-        $this->data['pagebody'] = 'Stock_Single';
-        $this->render();      
+          $stockList = $this->StockModel->getAllStock();
+          foreach($stockList->result() as $row){
+              $stockListResult[] = $row;
+          }
+          
+          $this->data['title'] = $stock;
+          $this->data['stockMovements'] = $stockMovements;
+          $this->data['stockTrans'] = $stockTrans;
+          $this->data['stockList'] = $stockListResult;
+          $this->data['pagebody'] = 'Stock_Single';
+          $this->render();  
+        } 
     }
 
   public function formSpecificStock()
