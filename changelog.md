@@ -2,6 +2,10 @@
 All notable changes to this project will be documented to this file.
 Change Log history will be recorded in descending order
 
+## 1.0.1
+** Changed Files **
+- Updated footer to stay at the bottom of the page instead of floating at the bottom of the screen
+
 ## 1.0
 - Fully function way of viewing stocks and player portfolio data from a database
 
