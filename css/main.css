@@ -30,7 +30,7 @@ body #white-bg {
 
 #content {
   margin-top: 20px;
-  margin-bottom: 80px;
+  margin-bottom: 40px;
 }
 
 
@@ -124,7 +124,6 @@ footer {
   text-align:center;
   height: 55px;
   padding: 20px;
-  position: fixed;
   bottom: 0px;
   left: 20px;
   right: 20px;
