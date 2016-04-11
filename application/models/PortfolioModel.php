@@ -6,8 +6,10 @@ class PortfolioModel extends CI_Model {
         // Call the Model constructor
         parent::__construct();
     }
-    
-    function getSpecificPortfolio($person){
+
+    //grab player portfolio data from database
+    function getSpecificPortfolio($person)
+    {
         $this->load->database();
         
         $this->db->select('*');
@@ -18,8 +20,10 @@ class PortfolioModel extends CI_Model {
         
         return $query;
     }
-    
-    function getAllPortfolio(){
+
+    //grab all portfolio info from database
+    function getAllPortfolio()
+    {
         $this->load->database();
         $this->db->select('*');
         $this->db->from('players');
@@ -28,8 +32,10 @@ class PortfolioModel extends CI_Model {
         
         return $query;
     }
-    
-    function isValid($playerName){
+
+    //validate player's name with database
+    function isValid($playerName)
+    {
       $listPeople = $this->getAllPortfolio();
       foreach($listPeople->result() as $row){
         if($row->Player == $playerName){

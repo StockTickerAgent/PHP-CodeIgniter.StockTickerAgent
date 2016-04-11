@@ -11,7 +11,7 @@
       </form>
     </div>
     <div class="col-sm-8">
-      <h2>{name}</h2>
+      <h2><b>{name}</b></h2>
       <p class="lead">Current Cash: {cash} <small>(Assuming the players database Cash value is the final amount after all the transactions)</small></p>
     </div>
   </div>

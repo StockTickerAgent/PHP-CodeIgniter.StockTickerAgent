@@ -4,13 +4,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Login extends MY_Controller
 {
 
+  //load specific portfolio data from model into
+  //a session variable and redirect to display the info
   function index()
   {
       /*
     $this->load->model("PortfolioModel");
-
     $player = $_POST['playername'];
-
     $playerList = $this->PortfolioModel->getAllPortfolio();
 
     $playerListResult = array();

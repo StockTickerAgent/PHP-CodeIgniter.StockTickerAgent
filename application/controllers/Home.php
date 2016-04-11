@@ -3,7 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends MY_Controller {
 
-  function index() {
+  //grab data from model and pass to view
+  function index()
+  {
     $this->load->model("StockModel");
     $this->load->model("PortfolioModel");
     $stockQuery = $this->StockModel->getAllStock();
@@ -19,9 +21,9 @@ class Home extends MY_Controller {
       $playerList[] = $row;
     }
 
+    $this->data['pagetitle'] = 'Welcome to the Stocks Game';
     $this->data['stockList'] = $stockList;
     $this->data['playerList'] = $playerList;
-
     $this->data['pagebody'] = 'Home';
 
     $this->render();
