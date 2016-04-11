@@ -19,20 +19,21 @@ class Portfolio extends MY_Controller {
 	}
 
     public function getSpecificPortfolio($name){
-      	    $this->load->model("PortfolioModel");
-            $result = $this->checkValid("portfolio",$name);
- 
-            if(!$result){
-              $this->data['pagebody'] = 'Error';
-              $this->data['title'] = 'Player Not Found!';
-              $this->render();  
-            } else {
+        $this->load->model("PortfolioModel");
+        $result = $this->checkValid("portfolio",$name);
+
+        if(!$result){
+            $this->data['pagebody'] = 'Error';
+            $this->data['title'] = 'Player Not Found!';
+            $this->render();  
+        } else {
             
-              $query = $this->PortfolioModel->getSpecificPortfolio($name);
+            $query = $this->PortfolioModel->getSpecificPortfolio($name);
 
             // Outputs all records to array for easier use
             $stockResult = array();
             $currentHoldings = array();
+           
 
             foreach ($query->result() as $row) {
                 $stockResult[] = $row;
@@ -54,10 +55,19 @@ class Portfolio extends MY_Controller {
                 }
             }
 
+
             // Pass the result to the view
+            $playerCash = 0;
             $this->data['stocks'] = $stockResult;
             $this->data['currentHoldings'] = $currentHoldings;
-            $this->data['cash'] = $stockResult[0]->Cash;
+            if(count($stockResult) != 0){
+                $playerCash = $stockResult[0]->Cash;
+            } else {
+                $queryPerson = $this->PortfolioModel->getPlayer($name);
+                $person = $queryPerson->result()[0];
+                $playerCash = $person->Cash;
+            }
+            $this->data['cash'] = $playerCash;
             $this->data['pagebody'] = 'portfolio_single';
             $this->data['name'] = $name;
 

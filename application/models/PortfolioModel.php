@@ -39,5 +39,26 @@ class PortfolioModel extends CI_Model {
       return false;
     }
     
+    function addPlayer($username){
+        $this->load->database();
+        
+        $data = array(
+            'Player'    => $username ,
+            'Cash'      => 1000 ,
+            'Equity'    => 1000
+        );
 
+        $this->db->insert('players', $data); 
+    }
+    
+    function getPlayer($name){
+        $this->load->database();
+        $this->db->select('*');
+        $this->db->from('players');
+        $this->db->where('Player',$name);
+        
+        $query = $this->db->get();
+        
+        return $query;
+    }
 }

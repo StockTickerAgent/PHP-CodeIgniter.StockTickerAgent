@@ -6,6 +6,7 @@ class Login extends MY_Controller
 
   function index()
   {
+      /*
     $this->load->model("PortfolioModel");
 
     $player = $_POST['playername'];
@@ -24,6 +25,35 @@ class Login extends MY_Controller
     }
 
     redirect("/portfolio/$player");
+    */
+
+    $this->data['pagebody'] = 'LogIn';
+    $this->data['ErrorMessage'] = '';
+    $this->render();
+  }
+  
+  function login_process(){
+      
+        $this->load->model("UsersModel");
+        $usersList = $this->UsersModel->getUsers();
+        $found = false;
+        
+        foreach ($usersList->result() as $row) {
+            if($row->username == $_POST['username'] && password_verify($_POST['password'],$row->password)){
+                echo $row->username . " " . $row->password;
+                $found = true;
+                break;         
+            }
+        }
+        
+        if($found){
+            $this->session->set_userdata('playername', $_POST['username']);
+            redirect("/portfolio/$player");
+        } else {
+            $this->data['pagebody'] = 'LogIn';
+            $this->data['ErrorMessage'] = 'Username And Password Combination Not Valid';
+            $this->render();
+        }
   }
 
 }
