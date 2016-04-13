@@ -6,9 +6,10 @@ class Stock extends MY_Controller {
     //load data from model and display all detail
 	public function index()
 	{
+        $url = "http://bsx.jlparry.com/data/stocks";
     $this->load->model("StockModel");
 
-    $stockList = $this->StockModel->getAllStock();
+    $stockList = $this->StockModel->getAllStock($url);
     foreach($stockList->result() as $row)
     {
       $stockListResult[] = $row;

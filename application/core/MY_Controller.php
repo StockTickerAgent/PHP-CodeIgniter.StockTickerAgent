@@ -73,6 +73,15 @@ class MY_Controller extends CI_Controller {
       
       return $valid;
     }
+
+    function parseURL($url)
+    {
+        if (($handle = fopen($url, "r")) !== FALSE) {
+            $data = fgetcsv($handle, 1000, ",");
+            fclose($handle);
+        }
+        return $data;
+    }
     
     function error404()
     {
