@@ -3,8 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ob_start();
 class MY_Controller extends CI_Controller {
 
-    protected $data = array();      // parameters for view components
-    protected $id;      // identifier for our content
+    protected $data = array();    // parameters for view components
+    protected $id;                // identifier for our content
 
     /**
      * Constructor.
@@ -60,22 +60,90 @@ class MY_Controller extends CI_Controller {
     function checkValid($temp_model,$item)
     {
       $model = "";
-      
+
       if($temp_model == "stock")
       {
         $model = "StockModel";
       } else {
         $model = "PortfolioModel";
       }
-      
+
       $this->load->model($model);
       $valid = $this->$model->isValid($item);
-      
+
       return $valid;
     }
-    
-    function error404()
+
+    // Used to check if we can render a game view
+    // Returns true if we can render a game view, false if we need to display an error page
+    function isBsxRunning()
     {
+      $data = $this->getServerStatus();
+      if ($data) {
+        if ($this->parseServerStatus($data)) {
+          $data['bsxData'] = $data;
+          return true;
+        }
+      }
+      return false;
+    }
+
+    // Checks the BSX server status
+    // Returns false is something goes wrong, or array if it succeeds
+    function getServerStatus()
+    {
+      if (($response_xml_data = file_get_contents('http://bsx.jlparry.com/status'))===false){
+          // Darn... server error
+          $this->output->set_status_header('500');
+          $this->data['pagebody'] = 'Error_500';
+          return false;
+      } else {
+         $data = simplexml_load_string($response_xml_data);
+         if (!$data) {
+             echo "Error loading XML\n";
+             foreach(libxml_get_errors() as $error) {
+                 echo "\t", $error->message;
+             }
+         } else {
+            return $data;
+         }
+      }
+      return false;
+    }
+
+    // Displays BSX server status
+    // Returns true if there is a round currently in progress on BSX
+    function parseServerStatus($data)
+    {
+      $show_error = true;
+      switch($data->state) {
+        case 0:
+          $this->data['message'] = "There is no active game, please wait until the next round opens.";
+          break;
+        case 1:
+          $this->data['message'] = "The stocks for the next round are being generated.";
+          break;
+        case 2:
+          // register the agent on the server
+          $show_error = false;
+          break;
+        case 3:
+          // the game is active, show page
+          $show_error = false;
+          break;
+        case 4:
+          $this->data['message'] = "The current round has concluded.";
+          break;
+      }
+
+      if ($show_error) {
+        $this->data['countdown'] = $data->countdown;
+        $this->data['pagebody'] = 'Error_State';
+        $this->render();
+        return false;
+      }
+
+      return true;
     }
 
 }
