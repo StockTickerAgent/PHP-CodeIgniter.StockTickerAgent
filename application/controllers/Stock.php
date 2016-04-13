@@ -6,20 +6,24 @@ class Stock extends MY_Controller {
     //load data from model and display all detail
 	public function index()
 	{
+    $stockUrl = "http://bsx.jlparry.com/data/stocks";
+    $movementUrl = "http://bsx.jlparry.com/data/movement";
+    $stockData = $this->parseURL($stockUrl);
+    $movementData = $this->parseURL($movementUrl);
     $this->load->model("StockModel");
 
-    $stockList = $this->StockModel->getAllStock();
-    foreach($stockList->result() as $row)
+    $stockList = $this->StockModel->getAllStock($stockData);
+    foreach($stockList as $row)
     {
       $stockListResult[] = $row;
     }
-    $stockRecent = $this->StockModel->getRecentMovement();
-    foreach ($stockRecent->result() as $row)
+    $stockRecent = $this->StockModel->getRecentMovement($movementData);
+    foreach ($stockRecent as $row)
     {
       $stockRecentResult[] = $row;
     }
-    $row = $stockRecentResult[count($stockRecentResult) - 1];
-    $this->getSpecificPortfolio($row->Code);
+    //$row = $stockRecentResult[count($stockRecentResult) - 1];
+    //$this->getSpecificPortfolio($row->Code);
   }
 
   //get specific data for a certain player

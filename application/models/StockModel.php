@@ -9,11 +9,13 @@ class StockModel extends CI_Model {
     }
 
     //grab all stock information from database
-    public function getAllStock()
+    public function getAllStock($stockData)
     {
-       $this->db->select('*');
+       /*$this->db->select('*');
        $query = $this->db->get('stocks');
-       return $query;
+       return $query;*/
+        var_dump($stockData);
+        return $stockData;
     }
 
     //grab specific stock info from database
@@ -52,13 +54,16 @@ class StockModel extends CI_Model {
    }
 
     //grab recent transcation info from database
-    public function getRecentMovement()
+    public function getRecentMovement($movementData)
     {
-         $this->load->database();
+         /*$this->load->database();
          $this->db->select('*');
          $this->db->from('movements');
          $query = $this->db->get();
-         return $query;
+         return $query;*/
+
+        var_dump($movementData);
+        return $movementData;
     }
 
    //validate stock with database
