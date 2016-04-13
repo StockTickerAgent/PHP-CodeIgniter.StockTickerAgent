@@ -37,7 +37,7 @@ class StockModel extends MY_Model {
    public function getSpecificStockTrans($data)
    {
         echo("----------Transactions-------------");
-        var_dump($data);
+        //var_dump($data);
         return $data;
    }
 
@@ -61,7 +61,7 @@ class StockModel extends MY_Model {
          $query = $this->db->get();
          return $query;*/
         echo("----------Movements-------------");
-        var_dump($movementData);
+        //var_dump($movementData);
         return $movementData;
     }
 
@@ -103,9 +103,6 @@ class StockModel extends MY_Model {
         $stockMovementList = array();
         // -1 because the latest one is never complete when pulling pulling data from server
         for($i = count($stockMovements) - 1; $i >= 0; $i--){
-            if(count($stockMovementList) == 5){
-                break;
-            }
             if($stockMovements[$i][2] == $stock){
                 $tempStockList = array();
 
@@ -137,4 +134,20 @@ class StockModel extends MY_Model {
 
         return $stockInfo;
    }
+   
+   function getAllStocks(){
+       $stockData = $this->parseURL("http://bsx.jlparry.com/data/stocks");
+        
+       $stockList = array();
+       for($i = 1; $i < count($stockData); $i++){
+            $stockInfo = array();
+            
+            $stockInfo["Code"] = $stockData[$i][0];
+            $stockInfo["Name"] = $stockData[$i][1];
+            $stockInfo["Value"] = $stockData[$i][3];
+            
+            array_push($stockList,$stockInfo);
+        } 
+        return $stockList; 
+    }
 }

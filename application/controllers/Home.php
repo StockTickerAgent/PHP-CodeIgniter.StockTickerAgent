@@ -17,19 +17,9 @@ class Home extends MY_Controller {
     
     $playerQuery = $this->PortfolioModel->getAllPortfolio();
     $userQuery = $this->UsersModel->getUsers();
+   
     
-    $stockData = $this->parseURL("http://bsx.jlparry.com/data/stocks");
-        
-    $stockList = array();
-    for($i = 1; $i < count($stockData); $i++){
-        $stockInfo = array();
-        
-        $stockInfo["Code"] = $stockData[$i][0];
-        $stockInfo["Name"] = $stockData[$i][1];
-        $stockInfo["Value"] = $stockData[$i][3];
-        
-        array_push($stockList,$stockInfo);
-    }    
+    $stockList = $this->StockModel->getAllStocks();  
 
 
     $playerList = array();

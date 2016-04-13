@@ -4,27 +4,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Stock extends MY_Controller {
 
     //load data from model and display all detail
-	public function index()
+    public function index()
 	{
-    $stockUrl = "http://bsx.jlparry.com/data/stocks";
-    $movementUrl = "http://bsx.jlparry.com/data/movement";
-    $stockData = $this->parseURL($stockUrl);
-    $movementData = $this->parseURL($movementUrl);
-    $this->load->model("StockModel");
+        /*
+        $stockUrl = "http://bsx.jlparry.com/data/stocks";
+        $movementUrl = "http://bsx.jlparry.com/data/movement";
+        $stockData = $this->parseURL($stockUrl);
+        $movementData = $this->parseURL($movementUrl);
+        $this->load->model("StockModel");
 
-    $stockList = $this->StockModel->getAllStock($stockData);
-    foreach($stockList as $row)
-    {
-      $stockListResult[] = $row;
+        $stockList = $this->StockModel->getAllStock($stockData);
+        foreach($stockList as $row)
+        {
+        $stockListResult[] = $row;
+        }
+        $stockRecent = $this->StockModel->getRecentMovement($movementData);
+        foreach ($stockRecent as $row)
+        {
+        $stockRecentResult[] = $row;
+        }
+        */
+        //$row = $stockRecentResult[count($stockRecentResult) - 1];
+        //$this->getSpecificPortfolio($row->Code);
+        
+        $this->load->model("StockModel");
+        
+        $stockList = $this->StockModel->getAllStocks();  
+        
+        $this->data['pagebody'] = 'Stock_All';
+        $this->data['stockList'] = $stockList;
+        $this->render();
     }
-    $stockRecent = $this->StockModel->getRecentMovement($movementData);
-    foreach ($stockRecent as $row)
-    {
-      $stockRecentResult[] = $row;
-    }
-    //$row = $stockRecentResult[count($stockRecentResult) - 1];
-    //$this->getSpecificPortfolio($row->Code);
-  }
 
   //get specific data for a certain player
   public function getSpecificStock($stock)
@@ -68,9 +78,11 @@ class Stock extends MY_Controller {
       $this->data['title'] = $stockInfo["Name"];
       
       $this->data['stockMovements'] = $movementList;
-      /*$this->data['stockTrans'] = $stockTrans;
+      /*
+      $this->data['stockTrans'] = $stockTrans;
       $this->data['stockList'] = $stockListResult;
-      */$this->data['pagebody'] = 'Stock_Single';
+      */
+      $this->data['pagebody'] = 'Stock_Single';
       $this->render();
     
   }
