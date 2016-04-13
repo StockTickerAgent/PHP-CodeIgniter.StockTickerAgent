@@ -25,6 +25,7 @@ class Portfolio extends MY_Controller {
   public function getSpecificPortfolio($name)
   {
     $this->load->model("PortfolioModel");
+    
     $result = $this->checkValid("portfolio",$name);
 
     if(!$result){
@@ -70,7 +71,7 @@ class Portfolio extends MY_Controller {
                 $currentHoldings[$row->Stock]->Quantity *= -1;
             }
         }
-    }
+    }  
 
     // Pass the result to the view
     $this->data['pagetitle'] = $name . '\'s Portfolio - ' . $this->data['pagetitle'];
