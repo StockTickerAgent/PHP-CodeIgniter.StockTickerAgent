@@ -8,11 +8,12 @@ class Home extends MY_Controller {
   {
     $this->load->model("StockModel");
     $this->load->model("PortfolioModel");
-    $stockQuery = $this->StockModel->getAllStock();
+    $stockData = $this->parseURL("http://bsx.jlparry.com/data/stocks");
+    $stockQuery = $this->StockModel->getAllStock($stockData);
     $playerQuery = $this->PortfolioModel->getAllPortfolio();
 
     $stockList = array();
-    foreach ($stockQuery->result() as $row) {
+    foreach ($stockQuery as $row) {
       $stockList[] = $row;
     }
 
