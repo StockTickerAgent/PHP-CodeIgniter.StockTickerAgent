@@ -44,9 +44,11 @@ class Stock extends MY_Controller {
         $stockMovements[] = $row;
       }
 
-      $query = $this->StockModel->getSpecificStockTrans($stock);
+      $transactionsUrl = "http://bsx.jlparry.com/data/transactions";
+      $transactionData  = $this->parseURL($transactionsUrl);
+      $query = $this->StockModel->getSpecificStockTrans($transactionData);
       $stockTrans = array();
-      foreach($query->result() as $row){
+      foreach($query as $row){
         $stockTrans[] = $row;
       }
 
