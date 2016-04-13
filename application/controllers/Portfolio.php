@@ -12,7 +12,7 @@ class Portfolio extends MY_Controller {
 
         $playerListResult = array();
         foreach($playerList->result() as $row){
-        $playerListResult[] = $row;
+            $playerListResult[] = $row;
         }
 
         $this->data['pagetitle'] = 'Choose a Portfolio - ' . $this->data['pagetitle'];
@@ -20,26 +20,6 @@ class Portfolio extends MY_Controller {
         $this->data['playerList'] = $playerListResult;
         $this->render();
 	}
-
-
-/*
-    public function getSpecificPortfolio($name){
-        $this->load->model("PortfolioModel");
-        $result = $this->checkValid("portfolio",$name);
-
-        if(!$result){
-            $this->data['pagebody'] = 'Error';
-            $this->data['title'] = 'Player Not Found!';
-            $this->render();  
-        } else {
-            
-            $query = $this->PortfolioModel->getSpecificPortfolio($name);
-
-            // Outputs all records to array for easier use
-            $stockResult = array();
-            $currentHoldings = array();
-            */
-           
 
   //get specific data about certain player from model
   public function getSpecificPortfolio($name)

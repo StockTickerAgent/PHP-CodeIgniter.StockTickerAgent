@@ -26,7 +26,7 @@ class Register extends MY_Controller
 
     redirect("/portfolio/$player");
     */
-
+   
     $this->data['pagebody'] = 'Register';
     $this->data['ErrorMessage'] = '';
     $this->render();
@@ -59,7 +59,7 @@ class Register extends MY_Controller
         }
         
         if($proceed){
-            $this->UsersModel->addUser($_POST['username'],password_hash($_POST['password'],PASSWORD_DEFAULT));
+            $this->UsersModel->addUser($_POST['username'],password_hash($_POST['password'],PASSWORD_DEFAULT),$_POST['role']);
             $this->PortfolioModel->addPlayer($_POST['username']);
             $this->data['pagebody'] = 'LogIn';
             $this->data['ErrorMessage'] = 'You Have Been Registered, You Can Now Log In';

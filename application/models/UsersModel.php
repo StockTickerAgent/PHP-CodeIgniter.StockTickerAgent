@@ -16,12 +16,13 @@ class UsersModel extends CI_Model {
         return $query;
     }
     
-    function addUser($username,$password){
+    function addUser($username,$password,$role){
         $this->load->database();
         
         $data = array(
             'username' => $username ,
-            'password' => $password 
+            'password' => $password ,
+            'role'     => $role
         );
 
         $this->db->insert('users', $data); 
