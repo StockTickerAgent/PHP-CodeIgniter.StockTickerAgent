@@ -6,23 +6,32 @@ class Home extends MY_Controller {
   //grab data from model and pass to view
   function index()
   {
+      
     if (!$this->isBsxRunning()) {
       return;
     }
-
+    
     $this->load->model("StockModel");
     $this->load->model("PortfolioModel");
     $this->load->model("UsersModel");
+    
     $stockQuery = $this->StockModel->getAllStock();
     $stockData = $this->parseURL("http://bsx.jlparry.com/data/stocks");
-    $stockQuery = $this->StockModel->getAllStock($stockData);
+    
     $playerQuery = $this->PortfolioModel->getAllPortfolio();
     $userQuery = $this->UsersModel->getUsers();
 
+    
     $stockList = array();
-    foreach ($stockQuery as $row) {
-      $stockList[] = $row;
-    }
+    for($i = 1; $i < count($stockData); $i++){
+        $stockInfo = array();
+        
+        $stockInfo["Name"] = $stockData[$i][1];
+        $stockInfo["Value"] = $stockData[$i][3];
+        
+        array_push($stockList,$stockInfo);
+    }    
+
 
     $playerList = array();
     foreach ($playerQuery->result() as $playerRow) {
