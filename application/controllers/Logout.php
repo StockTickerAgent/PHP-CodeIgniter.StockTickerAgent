@@ -7,6 +7,7 @@ class Logout extends MY_Controller
   function index()
   {
     $this->session->unset_userdata('playername');
+    $this->session->unset_userdata('role');
     $this->session->sess_destroy();
     redirect('/home');
   }

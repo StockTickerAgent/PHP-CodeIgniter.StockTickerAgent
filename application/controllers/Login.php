@@ -37,17 +37,19 @@ class Login extends MY_Controller
         $this->load->model("UsersModel");
         $usersList = $this->UsersModel->getUsers();
         $found = false;
+        $role = "";
         
         foreach ($usersList->result() as $row) {
             if($row->username == $_POST['username'] && password_verify($_POST['password'],$row->password)){
-                echo $row->username . " " . $row->password;
                 $found = true;
+                $role = $row->role;
                 break;         
             }
         }
         
         if($found){
             $this->session->set_userdata('playername', $_POST['username']);
+            $this->session->set_userdata('role', $role);
             redirect("/portfolio/$player");
         } else {
             $this->data['pagebody'] = 'LogIn';

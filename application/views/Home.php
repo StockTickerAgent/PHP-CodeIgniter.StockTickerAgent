@@ -23,12 +23,14 @@
         <h3>Players</h3>
         <table class="table table-striped">
           <thead>
-          <td>Player</td>
-          <td>Cash</td>
-          <td>Equity</td>
+            <td>Avatar</td>
+            <td>Player</td>
+            <td>Cash</td>
+            <td>Equity</td>
           </thead>
           {playerList}
           <tr>
+            <td><img class="avatarDashBoard" src="./data/avatar/{Avatar}"></td>
             <td><a href="/portfolio/{Player}">{Player}</a></td>
             <td>{Cash}</td>
             <td>{Equity}</td>

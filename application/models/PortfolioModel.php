@@ -51,7 +51,8 @@ class PortfolioModel extends CI_Model {
         $data = array(
             'Player'    => $username ,
             'Cash'      => 1000 ,
-            'Equity'    => 1000
+            'Equity'    => 1000 , 
+            'Username' => $username
         );
 
         $this->db->insert('players', $data); 
@@ -66,5 +67,15 @@ class PortfolioModel extends CI_Model {
         $query = $this->db->get();
         
         return $query;
+    }
+    
+    function deletePlayer($name){
+        $this->db->where('Player', $name);
+        $this->db->delete('players'); 
+    }
+    
+    function updateName($prevPlayerName, $playersData){
+        $this->db->where('Player', $prevPlayerName);
+        $this->db->update('players', $playersData); 
     }
 }

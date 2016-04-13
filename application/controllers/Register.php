@@ -38,6 +38,20 @@ class Register extends MY_Controller
         $usersList = $this->UsersModel->getUsers();
         $proceed = true;
         
+        $config['upload_path'] = './data/avatar/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']	= '1000';
+        $config['file_name'] = $this->generateRandomString();
+
+		$this->load->library('upload', $config);
+        
+        if($_POST['password'] == "" || $_POST['confirmPassword'] == ""){
+            $this->data['pagebody'] = 'Register';
+            $this->data['ErrorMessage'] = 'Passwords fields cannot be empty';
+            $proceed = false;
+            $this->render();
+        }
+        
         if($_POST['password'] !== $_POST['confirmPassword']){
             $this->data['pagebody'] = 'Register';
             $this->data['ErrorMessage'] = 'Passwords Do Not Match';
@@ -59,13 +73,31 @@ class Register extends MY_Controller
         }
         
         if($proceed){
-            $this->UsersModel->addUser($_POST['username'],password_hash($_POST['password'],PASSWORD_DEFAULT),$_POST['role']);
-            $this->PortfolioModel->addPlayer($_POST['username']);
-            $this->data['pagebody'] = 'LogIn';
-            $this->data['ErrorMessage'] = 'You Have Been Registered, You Can Now Log In';
-            $this->render();
+            if ( ! $this->upload->do_upload('avatar')) {
+                // Get the error
+			    $error = array('error' => $this->upload->display_errors());
+                $proceed = false;
+                
+                //Redirecting
+                $this->data['pagebody'] = 'Register';
+                $this->data['ErrorMessage'] = $error["error"];
+                $this->render();
+		    } else {
+                // Get the data
+			    $data = array('upload_data' => $this->upload->data());
+                
+                // Adding The Users to Database
+                $this->UsersModel->addUser($_POST['username'],password_hash($_POST['password'],PASSWORD_DEFAULT),$_POST['role'],$data["upload_data"]["file_name"]);
+                $this->PortfolioModel->addPlayer($_POST['username']);
+                
+                // Redirecting
+                $this->data['pagebody'] = 'LogIn';
+                $this->data['ErrorMessage'] = 'You Have Been Registered, You Can Now Log In';
+                $this->render();
+		    }
         }
         
   }
+ 
 
 }

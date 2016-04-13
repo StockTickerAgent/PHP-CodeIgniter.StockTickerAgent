@@ -140,6 +140,10 @@ footer a:hover{
 #home {
 
 }
+    .avatarDashBoard{
+         width:100px; /* you can use % */
+        height: auto;
+    }
 
 
 /*==============================*

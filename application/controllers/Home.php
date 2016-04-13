@@ -8,8 +8,10 @@ class Home extends MY_Controller {
   {
     $this->load->model("StockModel");
     $this->load->model("PortfolioModel");
+    $this->load->model("UsersModel");
     $stockQuery = $this->StockModel->getAllStock();
     $playerQuery = $this->PortfolioModel->getAllPortfolio();
+    $userQuery = $this->UsersModel->getUsers();
 
     $stockList = array();
     foreach ($stockQuery->result() as $row) {
@@ -17,8 +19,14 @@ class Home extends MY_Controller {
     }
 
     $playerList = array();
-    foreach ($playerQuery->result() as $row) {
-      $playerList[] = $row;
+    foreach ($playerQuery->result() as $playerRow) {
+        foreach($userQuery->result() as $userRow){
+            if($userRow->Player == $playerRow->Player){
+                $playerRow->Avatar = $userRow->avatar;
+                $playerList[] = $playerRow;
+                break;
+            }
+        }
     }
 
     $this->data['pagetitle'] = 'Welcome to the Stocks Game';

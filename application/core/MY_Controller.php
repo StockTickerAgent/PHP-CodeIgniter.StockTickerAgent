@@ -40,9 +40,13 @@ class MY_Controller extends CI_Controller {
     {
         // Load the header authentication section
         if (isset($this->data['username'])) {
-            $this->data['authenticate'] = $this->parser->parse('base/_header-authenticated', $this->data, true);
+            if($this->session->userdata('role') == "guest"){
+                $this->data['authenticate'] = $this->parser->parse('base/_header-guest', $this->data, true);
+            } else if($this->session->userdata('role') == "admin"){
+                $this->data['authenticate'] = $this->parser->parse('base/_header-admin', $this->data, true);
+            }
         } else {
-            $this->data['authenticate'] = $this->parser->parse('base/_header-guest', $this->data, true);
+            $this->data['authenticate'] = $this->parser->parse('base/_header-annoymous', $this->data, true);
         }
 
         // Load header and footer templates into base
@@ -76,6 +80,16 @@ class MY_Controller extends CI_Controller {
     
     function error404()
     {
+    }
+    
+    function generateRandomString() {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < 15; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
     }
 
 }

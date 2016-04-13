@@ -74,3 +74,11 @@ $route["[sS]tocks"] = "Stock";
 $route["stocks/getResult"] = "Stock/formSpecificStock";
 $route["stocks/stocks/getResult"] = "Stock/formSpecificStock";
 $route["[sS]tocks/(:any)"] = "Stock/getSpecificPortfolio/$1";
+
+// Player Management Routes
+$route["playerManagement"] = "PlayerManagement";
+$route["playerManagement/deletePlayer/(:any)"] = "PlayerManagement/deletePlayer/$1";
+$route["playerManagement/deletePlayerProcess"] = "PlayerManagement/deletePlayerProcess";
+
+$route["playerManagement/editPlayer/(:any)"] = "PlayerManagement/editPlayer/$1";
+$route["playerManagement/editPlayerProcess"] = "PlayerManagement/editPlayerProcess";
