@@ -14,6 +14,7 @@ class StockModel extends CI_Model {
        /*$this->db->select('*');
        $query = $this->db->get('stocks');
        return $query;*/
+        echo("----------Stocks-------------");
         var_dump($stockData);
         return $stockData;
     }
@@ -31,15 +32,11 @@ class StockModel extends CI_Model {
    }
 
    //grab specific stock transaction info from database
-   public function getSpecificStockTrans($stock)
+   public function getSpecificStockTrans($data)
    {
-        $this->load->database();
-        $this->db->select('*');
-        $this->db->from('stocks');
-        $this->db->join('transactions','transactions.Stock = stocks.Code');
-        $this->db->where('stocks.Name', $stock);
-        $query = $this->db->get();
-        return $query;
+        echo("----------Transactions-------------");
+        var_dump($data);
+        return $data;
    }
 
    //grab transaction info from database
@@ -61,7 +58,7 @@ class StockModel extends CI_Model {
          $this->db->from('movements');
          $query = $this->db->get();
          return $query;*/
-
+        echo("----------Movements-------------");
         var_dump($movementData);
         return $movementData;
     }
@@ -69,8 +66,25 @@ class StockModel extends CI_Model {
    //validate stock with database
    function isValid($stock)
    {
-        $listStock = $this->getAllStock();
-        foreach($listStock->result() as $row)
+       $test = array();
+       $row = 1;
+       if (($handle = fopen("http://bsx.jlparry.com/data/stocks", "r")) !== FALSE) {
+           while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+               $num = count($data);
+               //echo "<p> $num fields in line $row: <br /></p>\n";
+               $row++;
+               $test2 = array();
+               for ($c=0; $c < $num; $c++) {
+                   //echo $data[$c] . "<br />\n";
+                   $test2[] = $data[$c];
+               }
+               $test[] = $test2;
+           }
+           fclose($handle);
+       }
+       $listStock = $this->getAllStock($data);
+
+       foreach($listStock as $row)
         {
             if($row->Name == $stock || $row->Code == $stock)
             {
