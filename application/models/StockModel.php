@@ -9,11 +9,11 @@ class StockModel extends CI_Model {
     }
 
     //grab all stock information from database
-    public function getAllStock()
+    public function getAllStock($url)
     {
-       $this->db->select('*');
+       /*$this->db->select('*');
        $query = $this->db->get('stocks');
-       return $query;
+       return $query;*/
     }
 
     //grab specific stock info from database
