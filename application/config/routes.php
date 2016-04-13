@@ -73,7 +73,7 @@ $route["[pP]ortfolio/(:any)"] = "Portfolio/getSpecificPortfolio/$1";
 $route["[sS]tocks"] = "Stock";
 $route["stocks/getResult"] = "Stock/formSpecificStock";
 $route["stocks/stocks/getResult"] = "Stock/formSpecificStock";
-$route["[sS]tocks/(:any)"] = "Stock/getSpecificPortfolio/$1";
+$route["[sS]tocks/(:any)"] = "Stock/getSpecificStock/$1";
 
 // Player Management Routes
 $route["playerManagement"] = "PlayerManagement";

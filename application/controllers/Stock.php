@@ -27,10 +27,11 @@ class Stock extends MY_Controller {
   }
 
   //get specific data for a certain player
-  public function getSpecificPortfolio($stock)
+  public function getSpecificStock($stock)
   {
+      
     $this->load->model("StockModel");
-
+/*
     $result = $this->checkValid("stock",$stock);
     if(!$result){
       $this->output->set_status_header('404'); // setting header to 404
@@ -56,19 +57,26 @@ class Stock extends MY_Controller {
       foreach($stockList->result() as $row){
         $stockListResult[] = $row;
       }
+      */  
+        
+        $stockInfo = $this->StockModel->getStock($stock); 
+        
+        $movementList = $this->StockModel->getMovementStock($stock);
 
-      $this->data['pagetitle'] = $stock . ' - ' . $this->data['pagetitle'];
-      $this->data['title'] = $stock;
-      $this->data['stockMovements'] = $stockMovements;
-      $this->data['stockTrans'] = $stockTrans;
+
+      $this->data['pagetitle'] = $stockInfo["Name"] . ' - ' . $this->data['pagetitle'];
+      $this->data['title'] = $stockInfo["Name"];
+      
+      $this->data['stockMovements'] = $movementList;
+      /*$this->data['stockTrans'] = $stockTrans;
       $this->data['stockList'] = $stockListResult;
-      $this->data['pagebody'] = 'Stock_Single';
+      */$this->data['pagebody'] = 'Stock_Single';
       $this->render();
-    }
+    
   }
 
   //get stockChoice from the form
-  public function formSpecificStock()
+  function formSpecificStock()
   {
     $stock = $this->input->get('stockChoice');
     redirect("stocks/$stock");

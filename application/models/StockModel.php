@@ -1,6 +1,6 @@
 <?php
 
-class StockModel extends CI_Model {
+class StockModel extends MY_Model {
 
     function __construct()
     {
@@ -94,5 +94,47 @@ class StockModel extends CI_Model {
             }
         }
         return false;
+   }
+   
+   // Get movements of the stock (PARAM: STOCK CODE) 
+   function getMovementStock($stock){
+        $stockMovements = $this->parseURL("http://bsx.jlparry.com/data/Movement");
+        
+        $stockMovementList = array();
+        // -1 because the latest one is never complete when pulling pulling data from server
+        for($i = count($stockMovements) - 1; $i >= 0; $i--){
+            if(count($stockMovementList) == 5){
+                break;
+            }
+            if($stockMovements[$i][2] == $stock){
+                $tempStockList = array();
+
+                $tempStockList["Datetime"] = $stockMovements[$i][1];
+                $tempStockList["Code"] = $stockMovements[$i][2];
+                $tempStockList["Action"] = $stockMovements[$i][3];
+                $tempStockList["Amount"] = $stockMovements[$i][4];
+                
+                array_push($stockMovementList,$tempStockList);
+            }
+        }
+        return $stockMovementList;
+   }
+   
+   function getStock($stock){
+        $stockData = $this->parseURL("http://bsx.jlparry.com/data/stocks");
+        $stockInfo = array();
+        
+        for($i = 1; $i < count($stockData); $i++){
+            if($stockData[$i][0] == $stock){
+
+                $stockInfo["Name"] = $stockData[$i][1];
+                $stockInfo["Code"] = $stockData[$i][0];
+                $stockInfo["Value"] = $stockData[$i][3];
+
+                break;
+            }
+        } 
+
+        return $stockInfo;
    }
 }
