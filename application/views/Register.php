@@ -21,8 +21,8 @@
   <div class="form-group">
     <label for="exampleInputFile" class="col-sm-2 control-label">Avatar Upload</label>
     <div class="col-sm-10">
-        <input type="file" id="exampleInputFile">
-        <p class="help-block">Image File: (Insert Max Size)</p>
+        <input type="file" id="exampleInputFile" name="avatar">
+        <p class="help-block">Image File: (1000 Max Size)</p>
     </div>
   </div>
   <div class="form-group">

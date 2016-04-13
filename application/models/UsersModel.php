@@ -16,15 +16,27 @@ class UsersModel extends CI_Model {
         return $query;
     }
     
-    function addUser($username,$password,$role){
+    function addUser($username,$password,$role,$fileName){
         $this->load->database();
         
         $data = array(
-            'username' => $username ,
-            'password' => $password ,
-            'role'     => $role
+            'username'      => $username ,
+            'password'      => $password ,
+            'role'          => $role ,
+            'avatar'        => $fileName , 
+            'Player'    => $username
         );
 
         $this->db->insert('users', $data); 
+    }
+    
+    function updateAvatar($prevPlayerName, $usersData){
+        $this->db->where('Player', $prevPlayerName);
+        $this->db->update('users', $usersData); 
+    }
+    
+    function updateName($prevPlayerName, $playersData){
+        $this->db->where('Player', $prevPlayerName);
+        $this->db->update('users', $playersData); 
     }
 }
