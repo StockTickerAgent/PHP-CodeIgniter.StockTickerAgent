@@ -103,6 +103,7 @@ class StockModel extends MY_Model {
         $stockMovementList = array();
         // -1 because the latest one is never complete when pulling pulling data from server
         for($i = count($stockMovements) - 1; $i >= 0; $i--){
+            
             if($stockMovements[$i][2] == $stock){
                 $tempStockList = array();
 
@@ -114,7 +115,35 @@ class StockModel extends MY_Model {
                 array_push($stockMovementList,$tempStockList);
             }
         }
+        
         return $stockMovementList;
+   }
+   
+   function getRecentMovements(){
+       $stockMovements = $this->parseURL("http://bsx.jlparry.com/data/Movement");
+       
+       $stockMovementList = array();
+       
+       //var_dump($stockMovements);
+        // -1 because the latest one is never complete when pulling pulling data from server
+       for($i = count($stockMovements) - 1; $i >= 0; $i--){
+            if(count($stockMovementList) >= 5){
+                break;
+            }
+            
+            $tempStockList = array();
+
+            $tempStockList["Datetime"] = $stockMovements[$i][1];
+            $tempStockList["Code"] = $stockMovements[$i][2];
+            $tempStockList["Action"] = $stockMovements[$i][3];
+            $tempStockList["Amount"] = $stockMovements[$i][4];
+            
+            array_push($stockMovementList,$tempStockList);
+       }
+       
+    
+       
+       return $stockMovementList;
    }
    
    function getStock($stock){
@@ -149,5 +178,51 @@ class StockModel extends MY_Model {
             array_push($stockList,$stockInfo);
         } 
         return $stockList; 
+    }
+    
+    function getRecentTransaction(){
+        $stockTransactions = $this->parseURL("http://bsx.jlparry.com/data/transactions");
+
+        $transactionList = array();
+            // -1 because the latest one is never complete when pulling pulling data from server
+            for($i = count($stockTransactions) - 1; $i > 0; $i--){
+                if(count($transactionList) >= 5){
+                    break;
+                }
+                
+                $tempTransactionList = array();
+
+                $tempTransactionList["Datetime"] = $stockTransactions[$i][1];
+                $tempTransactionList["Agent"] = $stockTransactions[$i][2];
+                $tempTransactionList["Player"] = $stockTransactions[$i][3];
+                $tempTransactionList["Stock"] = $stockTransactions[$i][4];
+                $tempTransactionList["Trans"] = $stockTransactions[$i][5];
+                $tempTransactionList["Quantity"] = $stockTransactions[$i][6];
+                
+                array_push($transactionList,$tempTransactionList);
+            }
+            
+                   $tempTransactionList["Datetime"] = "June";
+            $tempTransactionList["Agent"] = "Kobe";
+            $tempTransactionList["Player"] = "Bryant";
+            $tempTransactionList["Stock"] = "Lakers";
+            $tempTransactionList["Trans"] = "81";
+            $tempTransactionList["Quantity"] = "2016";
+            array_push($transactionList,$tempTransactionList);
+            
+        return $transactionList;
+       
+       
+       /*
+       $tempTransactionList["Datetime"] = "June";
+            $tempTransactionList["Agent"] = "Kobe";
+            $tempTransactionList["Player"] = "Bryant";
+            $tempTransactionList["Stock"] = "Lakers";
+            $tempTransactionList["Trans"] = "81";
+            $tempTransactionList["Quantity"] = "2016";
+            array_push($transactionList,$tempTransactionList);
+            */
+            
+            //var_dump($transactionList);
     }
 }
