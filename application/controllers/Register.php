@@ -87,7 +87,7 @@ class Register extends MY_Controller
 			    $data = array('upload_data' => $this->upload->data());
                 
                 // Adding The Users to Database
-                $this->UsersModel->addUser($_POST['username'],password_hash($_POST['password'],PASSWORD_DEFAULT),$_POST['role'],$data["upload_data"]["file_name"]);
+                $this->UsersModel->addUser($_POST['username'],password_hash($_POST['password'],PASSWORD_DEFAULT), "guest", $data["upload_data"]["file_name"]);
                 $this->PortfolioModel->addPlayer($_POST['username']);
                 
                 // Redirecting
