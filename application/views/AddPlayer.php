@@ -1,5 +1,5 @@
 {ErrorMessage}
-<form class="form-horizontal" method="POST" action="/register/process" enctype="multipart/form-data">
+<form class="form-horizontal" method="POST" action="/playerManagement/addPlayerProcess" enctype="multipart/form-data">
   <div class="form-group">
     <label for="username" class="col-sm-2 control-label">Username</label>
     <div class="col-sm-10">
@@ -23,6 +23,15 @@
     <div class="col-sm-10">
         <input type="file" id="exampleInputFile" name="avatar">
         <p class="help-block">Image File: (1000 Max Size)</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="roles" class="col-sm-2 control-label">Roles</label>
+    <div class="col-sm-10">
+        <select name="role" class="form-control">
+            <option value="admin">Admin</option>
+            <option value="guest">Guest</option>
+        </select>
     </div>
   </div>
   <div class="form-group">

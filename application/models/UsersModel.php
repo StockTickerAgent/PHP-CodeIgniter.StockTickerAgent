@@ -35,8 +35,9 @@ class UsersModel extends CI_Model {
         $this->db->update('users', $usersData); 
     }
     
-    function updateName($prevPlayerName, $playersData){
+    function updateUser($prevPlayerName, $playersData){
         $this->db->where('Player', $prevPlayerName);
         $this->db->update('users', $playersData); 
     }
+    
 }

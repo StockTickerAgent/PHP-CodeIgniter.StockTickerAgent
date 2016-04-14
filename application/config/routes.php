@@ -82,3 +82,6 @@ $route["playerManagement/deletePlayerProcess"] = "PlayerManagement/deletePlayerP
 
 $route["playerManagement/editPlayer/(:any)"] = "PlayerManagement/editPlayer/$1";
 $route["playerManagement/editPlayerProcess"] = "PlayerManagement/editPlayerProcess";
+
+$route["playerManagement/addPlayer/"] = "PlayerManagement/addPlayer";
+$route["playerManagement/addPlayerProcess/"] = "PlayerManagement/addPlayerProcess";
