@@ -17,10 +17,10 @@ class Home extends MY_Controller {
     
     $playerQuery = $this->PortfolioModel->getAllPortfolio();
     $userQuery = $this->UsersModel->getUsers();
-   
-    
+     
     $stockList = $this->StockModel->getAllStocks();  
-
+    $movementsList = $this->StockModel->getRecentMovements();
+    $transactionList = $this->StockModel->getRecentTransaction();
 
     $playerList = array();
     foreach ($playerQuery->result() as $playerRow) {
@@ -32,13 +32,13 @@ class Home extends MY_Controller {
             }
         }
     }
-
+    
     $this->data['pagetitle'] = 'Welcome to the Stocks Game';
     $this->data['stockList'] = $stockList;
     $this->data['playerList'] = $playerList;
+    $this->data['movementsList'] = $movementsList;
+    $this->data['transactionList'] = $transactionList;
     $this->data['pagebody'] = 'Home';
-
-
 
     $this->render();
   }
