@@ -46,7 +46,7 @@
         <table class="table table-striped">
           <thead>
             <td>Date - Time</td>
-            <td>Player</td>
+            <td>Player's Name</td>
             <td>Stock</td>
             <td>Transaction</td>
             <td>Quantity</td>

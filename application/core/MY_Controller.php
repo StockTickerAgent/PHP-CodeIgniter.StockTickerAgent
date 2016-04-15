@@ -28,6 +28,7 @@ class MY_Controller extends CI_Controller {
 
         // Send the user session
         $session_id = $this->session->userdata('playername');
+        
         if ($session_id) {
             $this->data['username'] = $session_id;
         }

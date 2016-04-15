@@ -1,7 +1,7 @@
 {ErrorMessage}
 <form class="form-horizontal" method="POST" action="/playerManagement/addPlayerProcess" enctype="multipart/form-data">
   <div class="form-group">
-    <label for="username" class="col-sm-2 control-label">Username</label>
+    <label for="username" class="col-sm-2 control-label">Player's Name</label>
     <div class="col-sm-10">
       <input type="email" class="form-control" name="username" id="username" placeholder="Username">
     </div>

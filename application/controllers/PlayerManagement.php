@@ -123,9 +123,11 @@ class playerManagement extends MY_Controller
         $usersData = array(
             'role'   => $_POST["role"]
         );
-          
-        $this->PortfolioModel->updateName($_POST["prevPlayerName"],$playersData);
         $this->UsersModel->updateUser($_POST["prevPlayerName"],$usersData);
+          
+        // Update the Foreign Keys 
+        $this->PortfolioModel->updateName($_POST["prevPlayerName"],$playersData);
+        $this->UsersModel->updateName($_POST["prevPlayerName"],$playersData);
         
         $this->data['pagebody'] = 'PlayerManagement';
         $this->data['playerList'] = $this->populatePlayers();

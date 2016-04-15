@@ -6,7 +6,7 @@
         <div class="box-group">
           <table id="player-list" class="table table-striped">
               <thead>
-              <td>Player</td>
+              <td>Player's Name</td>
               <td>Cash</td>
               <td>Equity</td>
               </thead>

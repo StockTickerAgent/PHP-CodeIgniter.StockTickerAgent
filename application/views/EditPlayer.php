@@ -4,7 +4,7 @@
     <form class="form-horizontal" method="POST" action="/playerManagement/editPlayerProcess" enctype="multipart/form-data">
         <h3>Editing Player: {Player}</h3>
         <div class="form-group">
-            <label for="inputEmail3" class="col-sm-2 control-label">Player</label>
+            <label for="inputEmail3" class="col-sm-2 control-label">Username</label>
             <div class="col-sm-10">
                 <input type="text" name="playerName" value="{Player}">
                 <input type="hidden" name="prevPlayerName" value="{Player}">

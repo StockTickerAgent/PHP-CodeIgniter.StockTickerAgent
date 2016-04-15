@@ -50,7 +50,7 @@
         <table class="table table-striped">
           <thead>
             <td>Avatar</td>
-            <td>Player</td>
+            <td>Player's Name</td>
             <td>Cash</td>
             <td>Equity</td>
           </thead>
