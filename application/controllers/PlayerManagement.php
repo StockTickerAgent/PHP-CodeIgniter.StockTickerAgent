@@ -83,8 +83,8 @@ class playerManagement extends MY_Controller
       
       if($proceed){
           $playersData = array(
-               'Player' => $playerName,
-            );
+               'Player' => $playerName
+          );
           if(file_exists($_FILES['avatar']['tmp_name']) && is_uploaded_file($_FILES['avatar']['tmp_name'])) {
                 // file uploaded
                 $config['upload_path'] = './data/avatar/';
@@ -117,10 +117,15 @@ class playerManagement extends MY_Controller
                     
                     $this->UsersModel->updateAvatar($_POST["prevPlayerName"],$usersData);
                     
-                    // Redirecting
                 }
           } 
           
+        $usersData = array(
+            'role'   => $_POST["role"]
+        );
+        $this->UsersModel->updateUser($_POST["prevPlayerName"],$usersData);
+          
+        // Update the Foreign Keys 
         $this->PortfolioModel->updateName($_POST["prevPlayerName"],$playersData);
         $this->UsersModel->updateName($_POST["prevPlayerName"],$playersData);
         
@@ -133,6 +138,78 @@ class playerManagement extends MY_Controller
           $this->render();
       }
       
+  }
+  
+  function addPlayer(){
+        $this->data["ErrorMessage"] = "";
+        $this->data['pagebody'] = 'AddPlayer';
+        $this->render();
+  }
+  
+  function addPlayerProcess(){
+        $this->load->model("UsersModel");
+        $this->load->model('PortfolioModel');
+        $usersList = $this->UsersModel->getUsers();
+        $proceed = true;
+        
+        $config['upload_path'] = './data/avatar/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']	= '1000';
+        $config['file_name'] = $this->generateRandomString();
+
+		$this->load->library('upload', $config);
+        
+        if($_POST['password'] == "" || $_POST['confirmPassword'] == ""){
+            $this->data['pagebody'] = 'Register';
+            $this->data['ErrorMessage'] = 'Passwords fields cannot be empty';
+            $proceed = false;
+            $this->render();
+        }
+        
+        if($_POST['password'] !== $_POST['confirmPassword']){
+            $this->data['pagebody'] = 'Register';
+            $this->data['ErrorMessage'] = 'Passwords Do Not Match';
+            $proceed = false;
+            $this->render();
+        }
+        
+        foreach ($usersList->result() as $row) {
+            if(strtolower($row->username) == strtolower($_POST['username'])){
+                $proceed = false;
+                break;         
+            }
+        }
+
+        if(!$proceed){
+            $this->data['pagebody'] = 'AddPlayer';
+            $this->data['ErrorMessage'] = 'Username Already in the Database';
+            $this->render();
+        }
+        
+        if($proceed){
+            if ( ! $this->upload->do_upload('avatar')) {
+                // Get the error
+			    $error = array('error' => $this->upload->display_errors());
+                $proceed = false;
+                
+                //Redirecting
+                $this->data['pagebody'] = 'AddPlayer';
+                $this->data['ErrorMessage'] = $error["error"];
+                $this->render();
+		    } else {
+                // Get the data
+			    $data = array('upload_data' => $this->upload->data());
+                
+                // Adding The Users to Database
+                $this->UsersModel->addUser($_POST['username'],password_hash($_POST['password'],PASSWORD_DEFAULT),$_POST['role'],$data["upload_data"]["file_name"]);
+                $this->PortfolioModel->addPlayer($_POST['username']);
+                
+                // Redirecting
+                $this->data['pagebody'] = 'PlayerManagement';
+                $this->data['playerList'] = $this->populatePlayers();
+                $this->render();
+		    }
+        }
   }
   
  

@@ -1,10 +1,18 @@
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-11">
         <h3>Players</h3>
-        <table class="table table-striped">
+    </div>
+    <div class="col-md-1">
+        <a href="/playerManagement/addPlayer">Add</a>   
+    </div>
+ </div>
+ 
+ <div class="row">
+     <div class="col-md-12">
+         <table class="table table-striped">
             <thead>
             <td>Avatar</td>
-            <td>Player</td>
+            <td>Player's Name</td>
             <td>Cash</td>
             <td>Equity</td>
             <td></td>
@@ -20,4 +28,4 @@
             {/playerList}
         </table>
     </div>
- </div>
+</div>

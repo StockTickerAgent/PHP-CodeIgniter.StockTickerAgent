@@ -3,9 +3,8 @@
     {player}
     <form class="form-horizontal" method="POST" action="/playerManagement/editPlayerProcess" enctype="multipart/form-data">
         <h3>Editing Player: {Player}</h3>
-        
         <div class="form-group">
-            <label for="inputEmail3" class="col-sm-2 control-label">Player</label>
+            <label for="inputEmail3" class="col-sm-2 control-label">Username</label>
             <div class="col-sm-10">
                 <input type="text" name="playerName" value="{Player}">
                 <input type="hidden" name="prevPlayerName" value="{Player}">
@@ -29,6 +28,15 @@
             <div class="col-sm-10">
                 <input type="file" id="exampleInputFile" name="avatar">
                 <p class="help-block">Image File: (1000 Max Size)</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="roles" class="col-sm-2 control-label">Roles</label>
+            <div class="col-sm-10">
+                <select name="role" class="form-control">
+                    <option value="admin">Admin</option>
+                    <option value="guest">Guest</option>
+                </select>
             </div>
         </div>
         <div class="form-group">

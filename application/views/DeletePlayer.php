@@ -3,7 +3,7 @@
     <form class="form-horizontal" method="POST" action="/playerManagement/deletePlayerProcess">
         <h3>Deleting Player: {Player}</h3>
         <div class="form-group">
-            <label for="inputEmail3" class="col-sm-2 control-label">Player</label>
+            <label for="inputEmail3" class="col-sm-2 control-label">Player's Name</label>
             <div class="col-sm-10">
                 <input type="hidden" name="playerName" value="{Player}">
                 <p>{Player}</p>
