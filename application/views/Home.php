@@ -57,7 +57,7 @@
           {playerList}
           <tr>
             <td><img class="avatarDashBoard" src="./data/avatar/{Avatar}"></td>
-            <td><a href="/portfolio/{Player}">{Player}</a></td>
+            <td><a href="/portfolio/{Id}">{Player}</a></td>
             <td>{Cash}</td>
             <td>{Equity}</td>
           </tr>

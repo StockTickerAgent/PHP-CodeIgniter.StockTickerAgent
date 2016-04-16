@@ -48,6 +48,7 @@ class playerManagement extends MY_Controller
             
             if($userRow->Player == $playerRow->Player){
                 $playerRow->Avatar = $userRow->avatar;
+                $playerRow->Id = $userRow->id;
                 $playerList[] = $playerRow;
                 break;
             }
@@ -58,9 +59,9 @@ class playerManagement extends MY_Controller
     return $playerList;
   }
   
-  function editPlayer($playerName){
+  function editPlayer($id){
       $this->load->model("PortfolioModel");
-      $playerQuery = $this->PortfolioModel->getPlayer($playerName);
+      $playerQuery = $this->PortfolioModel->getPlayer($id);
       
       foreach($playerQuery->result() as $row){
         $player[] = $row;    
@@ -133,8 +134,17 @@ class playerManagement extends MY_Controller
         $this->data['playerList'] = $this->populatePlayers();
         $this->render();
       } else {
+            $playerQuery = $this->PortfolioModel->getPlayer($_POST['id']);
+      
+            foreach($playerQuery->result() as $row){
+                $player[] = $row;    
+            }
+            
+            
+          
           $this->data["ErrorMessage"] = "Player Name Is Already In The Database";
           $this->data['pagebody'] = 'EditPlayer';
+          $this->data['player'] = $player;
           $this->render();
       }
       

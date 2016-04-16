@@ -15,7 +15,8 @@ class PortfolioModel extends CI_Model {
         $this->db->select('*');
         $this->db->from('players');
         $this->db->join('transactions','transactions.Player = players.Player');
-        $this->db->where('players.Player', $person);
+        $this->db->join('users','users.Player = players.Player');
+        $this->db->where('users.id', $person);
         $query = $this->db->get();
         
         return $query;
@@ -27,6 +28,7 @@ class PortfolioModel extends CI_Model {
         $this->load->database();
         $this->db->select('*');
         $this->db->from('players');
+        $this->db->join('users','users.Player = players.Player');
         
         $query = $this->db->get();
         
@@ -58,11 +60,12 @@ class PortfolioModel extends CI_Model {
         $this->db->insert('players', $data); 
     }
     
-    function getPlayer($name){
+    function getPlayer($playerId){
         $this->load->database();
         $this->db->select('*');
         $this->db->from('players');
-        $this->db->where('Player',$name);
+        $this->db->join('users','users.Player = players.Player');
+        $this->db->where('users.id',$playerId);
         
         $query = $this->db->get();
         
@@ -78,4 +81,5 @@ class PortfolioModel extends CI_Model {
         $this->db->where('Player', $prevPlayerName);
         $this->db->update('players', $playersData); 
     }
+    
 }
