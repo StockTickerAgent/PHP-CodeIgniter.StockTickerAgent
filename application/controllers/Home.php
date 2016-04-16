@@ -27,6 +27,7 @@ class Home extends MY_Controller {
         foreach($userQuery->result() as $userRow){
             if($userRow->Player == $playerRow->Player){
                 $playerRow->Avatar = $userRow->avatar;
+                $playerRow->Id = $userRow->id;
                 $playerList[] = $playerRow;
                 break;
             }

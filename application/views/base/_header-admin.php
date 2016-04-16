@@ -6,7 +6,7 @@
     <a href="/stocks">Stocks</a>
   </li>
   <li class="<?php echo active_link('Portfolio'); ?>">
-    <a href="/portfolio/{username}">Portfolio</a>
+    <a href="/portfolio/{id}">Portfolio</a>
   </li>
   <li class="<?php echo active_link('PlayerManagement'); ?>">
     <a href="/playerManagement">Player Management</a>

@@ -22,11 +22,11 @@ class Portfolio extends MY_Controller {
 	}
 
   //get specific data about certain player from model
-  public function getSpecificPortfolio($name)
+  public function getSpecificPortfolio($id)
   {
     $this->load->model("PortfolioModel");
     
-    $result = $this->checkValid("portfolio",$name);
+    $result = $this->checkValid("portfolio",$id);
 
     if(!$result){
       $this->output->set_status_header('404'); // setting header to 404
@@ -35,28 +35,17 @@ class Portfolio extends MY_Controller {
     } else {
 
 
-    $query = $this->PortfolioModel->getSpecificPortfolio($name);
+    $query = $this->PortfolioModel->getSpecificPortfolio($id);
 
     // Outputs all records to array for easier use
     $stockResult = array();
     $currentHoldings = array();
+    $playersName = "";
+    $playerCash = 0;
 
     foreach ($query->result() as $row) {
         $stockResult[] = $row;
-        // Pass the result to the view
-        $playerCash = 0;
-        $this->data['stocks'] = $stockResult;
-        $this->data['currentHoldings'] = $currentHoldings;
-        if(count($stockResult) != 0){
-            $playerCash = $stockResult[0]->Cash;
-        } else {
-            $queryPerson = $this->PortfolioModel->getPlayer($name);
-            $person = $queryPerson->result()[0];
-            $playerCash = $person->Cash;
-        }
-        $this->data['cash'] = $playerCash;
-        $this->data['pagebody'] = 'portfolio_single';
-        $this->data['name'] = $name;
+        
         if ($row->Trans == "buy") {
             if (array_key_exists($row->Stock, $currentHoldings)) {
                 $currentHoldings[$row->Stock]->Quantity += $row->Quantity;
@@ -72,21 +61,24 @@ class Portfolio extends MY_Controller {
             }
         }
     }  
-
-    // Pass the result to the view
-    $this->data['pagetitle'] = $name . '\'s Portfolio - ' . $this->data['pagetitle'];
-    $this->data['stocks'] = $stockResult;
-    $this->data['currentHoldings'] = $currentHoldings;
+    
     if(count($stockResult) != 0){
        $playerCash = $stockResult[0]->Cash;
     } else {
-        $queryPerson = $this->PortfolioModel->getPlayer($name);
+        $queryPerson = $this->PortfolioModel->getPlayer($id);
         $person = $queryPerson->result()[0];
         $playerCash = $person->Cash;
+        $playersName = $person->Player;
     }
+    
+    // Pass the result to the view
+    $this->data['pagetitle'] = $playersName . '\'s Portfolio - ' . $this->data['pagetitle'];
+    $this->data['stocks'] = $stockResult;
+    $this->data['currentHoldings'] = $currentHoldings;
+    
     $this->data['cash'] = $playerCash;
     $this->data['pagebody'] = 'portfolio_single';
-    $this->data['name'] = $name;
+    $this->data['name'] = $playersName;
 
     $this->render();
     }

@@ -41,6 +41,7 @@ class MY_Controller extends CI_Controller {
     {
         // Load the header authentication section
         if (isset($this->data['username'])) {
+            $this->data["id"] = $this->session->userdata('id');
             if($this->session->userdata('role') == "guest"){
                 $this->data['authenticate'] = $this->parser->parse('base/_header-guest', $this->data, true);
             } else if($this->session->userdata('role') == "admin"){
@@ -57,6 +58,9 @@ class MY_Controller extends CI_Controller {
         // Load pagebody view into base template
         $this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
         $this->data['data'] = &$this->data;
+        
+        //echo $this->session->userdata('id');
+
 
         $this->parser->parse('base/_template', $this->data);
     }

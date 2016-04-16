@@ -8,6 +8,7 @@
             <div class="col-sm-10">
                 <input type="text" name="playerName" value="{Player}">
                 <input type="hidden" name="prevPlayerName" value="{Player}">
+                <input type="hidden" name="id" value="{id}">
             </div>
         </div>
         <div class="form-group">
