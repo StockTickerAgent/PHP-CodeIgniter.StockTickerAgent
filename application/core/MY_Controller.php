@@ -32,6 +32,9 @@ class MY_Controller extends CI_Controller {
         if ($session_id) {
             $this->data['username'] = $session_id;
         }
+
+        // Make sure everything is up to date from the BSX server
+        $this->updateBsxStatus();
     }
 
     /**
@@ -52,7 +55,6 @@ class MY_Controller extends CI_Controller {
         }
 
         // Load header and footer templates into base
-        $this->updateBsxStatus();
         $this->data['gameStatus'] = $this->parser->parse('base/_gamestatus', $this->data['bsxData'], true);
         $this->data['header'] = $this->parser->parse('base/_header', $this->data, true);
         $this->data['footer'] = $this->parser->parse('base/_footer', $this->data, true);
