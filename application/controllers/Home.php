@@ -6,19 +6,14 @@ class Home extends MY_Controller {
   //grab data from model and pass to view
   function index()
   {
-      /*
-    if (!$this->isBsxRunning()) {
-      return;
-    }
-    */
     $this->load->model("StockModel");
     $this->load->model("PortfolioModel");
     $this->load->model("UsersModel");
-    
+
     $playerQuery = $this->PortfolioModel->getAllPortfolio();
     $userQuery = $this->UsersModel->getUsers();
-     
-    $stockList = $this->StockModel->getAllStocks();  
+
+    $stockList = $this->StockModel->getAllStocks();
     $movementsList = $this->StockModel->getRecentMovements();
     $transactionList = $this->StockModel->getRecentTransaction();
 
@@ -33,7 +28,7 @@ class Home extends MY_Controller {
             }
         }
     }
-    
+
     $this->data['pagetitle'] = 'Welcome to the Stocks Game';
     $this->data['stockList'] = $stockList;
     $this->data['playerList'] = $playerList;

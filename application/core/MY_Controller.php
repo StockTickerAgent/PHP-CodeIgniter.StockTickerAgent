@@ -28,7 +28,7 @@ class MY_Controller extends CI_Controller {
 
         // Send the user session
         $session_id = $this->session->userdata('playername');
-        
+
         if ($session_id) {
             $this->data['username'] = $session_id;
         }
@@ -52,13 +52,15 @@ class MY_Controller extends CI_Controller {
         }
 
         // Load header and footer templates into base
+        $this->updateBsxStatus();
+        $this->data['gameStatus'] = $this->parser->parse('base/_gamestatus', $this->data['bsxData'], true);
         $this->data['header'] = $this->parser->parse('base/_header', $this->data, true);
         $this->data['footer'] = $this->parser->parse('base/_footer', $this->data, true);
 
         // Load pagebody view into base template
         $this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
         $this->data['data'] = &$this->data;
-        
+
         //echo $this->session->userdata('id');
 
 
@@ -85,74 +87,51 @@ class MY_Controller extends CI_Controller {
 
     // Used to check if we can render a game view
     // Returns true if we can render a game view, false if we need to display an error page
-    function isBsxRunning()
+    function updateBsxStatus()
     {
-      $data = $this->getServerStatus();
+      $data = $this->GameModel->getServerStatus();
       if ($data) {
-        if ($this->parseServerStatus($data)) {
-          $data['bsxData'] = $data;
-          return true;
-        }
+        $this->parseServerStatus($data);
+        $this->data['bsxData'] = $data;
       }
-      return false;
-    }
-
-    // Checks the BSX server status
-    // Returns false is something goes wrong, or array if it succeeds
-    function getServerStatus()
-    {
-      if (($response_xml_data = file_get_contents('http://bsx.jlparry.com/status'))===false){
-          // Darn... server error
-          $this->output->set_status_header('500');
-          $this->data['pagebody'] = 'Error_500';
-          return false;
-      } else {
-         $data = simplexml_load_string($response_xml_data);
-         if (!$data) {
-             echo "Error loading XML\n";
-             foreach(libxml_get_errors() as $error) {
-                 echo "\t", $error->message;
-             }
-         } else {
-            return $data;
-         }
-      }
-      return false;
     }
 
     // Displays BSX server status
     // Returns true if there is a round currently in progress on BSX
     function parseServerStatus($data)
     {
-      $show_error = true;
+      $statusType = array();
       switch($data->state) {
         case 0:
-          $this->data['message'] = "There is no active game, please wait until the next round opens.";
+          $data->addChild('statusType', 'danger');
           break;
         case 1:
-          $this->data['message'] = "The stocks for the next round are being generated.";
+          $data->addChild('statusType', 'warning');
           break;
         case 2:
-          // register the agent on the server
-          $show_error = false;
-          break;
-        case 3:
-          // the game is active, show page
-          $show_error = false;
+          $data->addChild('statusType', 'warning');
           break;
         case 4:
-          $this->data['message'] = "The current round has concluded.";
+          $data->addChild('statusType', 'danger');
+          break;
+        default:
+          $data->addChild('statusType', 'info');
           break;
       }
 
-      if ($show_error) {
-        $this->data['countdown'] = $data->countdown;
-        $this->data['pagebody'] = 'Error_State';
-        $this->render();
-        return false;
-      }
+      // Make sure we're registered for the round
+      if ($data->state == 2 || $data->state == 3) {
+        $storedRound = $this->GameModel->getCurrentRound()['round'];
 
-      return true;
+        // Only update the database if we haven't already registered
+        if ($storedRound != $data->round) {
+          $registration = $this->GameModel->registerAgent();
+
+          if ($registration && $registration->team != null) {
+            $this->GameModel->updateRound($registration->team, $data->round, $registration->token);
+          }
+        }
+      }
     }
 
     public function parseURL($url)
@@ -175,7 +154,7 @@ class MY_Controller extends CI_Controller {
         }
         return $test;
     }
-    
+
     function generateRandomString() {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
