@@ -4,7 +4,7 @@
       <form method="GET" id="user-select" action="/portfolio/getResult" class="form-inline pull-right">
         <select name="playerChoice" class="form-control">
             {playerList}
-                <option value="{Player}">{Player}</option>
+                <option value="{id}">{Player}</option>
             {/playerList}
         </select>
           <input type="submit" value="Change" class="btn btn-default">
