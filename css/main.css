@@ -209,6 +209,7 @@ footer a:hover{
 /*==============================*
  * LOGIN / REGISTER PAGE Styling
  *==============================*/
-.bg-danger {
+.bg-danger,
+.bg-success {
   padding: 10px;
 }

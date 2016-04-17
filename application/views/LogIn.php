@@ -10,6 +10,17 @@
   <?php
   }
   ?>
+  <?php
+  if ($this->session->flashdata('success')) {
+  ?>
+  <div class="col-md-6 col-md-offset-3">
+    <p class="bg-success">
+      <span class="text-success"><b><?php echo $this->session->flashdata('success'); ?></b></span>
+    </p>
+  </div>
+  <?php
+  }
+  ?>
 </div>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">

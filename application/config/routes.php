@@ -55,7 +55,6 @@ $route['translate_uri_dashes'] = FALSE;
 
 // Register Routes
 $route["register"] = "Register";
-$route["register/process"] = "Register/register_process";
 
 // Log In Routes
 $route["login"] = "Login";
