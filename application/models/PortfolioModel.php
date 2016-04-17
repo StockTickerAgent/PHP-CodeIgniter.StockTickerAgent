@@ -82,4 +82,15 @@ class PortfolioModel extends CI_Model {
         $this->db->update('players', $playersData); 
     }
     
+    function isValidId($playerId)
+    {
+      $listPeople = $this->getAllPortfolio();
+      foreach($listPeople->result() as $row){
+        if($row->id == $playerId){
+          return true;
+        }
+      }
+      return false;
+    }
+    
 }

@@ -78,7 +78,7 @@ class MY_Controller extends CI_Controller {
       }
 
       $this->load->model($model);
-      $valid = $this->$model->isValid($item);
+      $valid = $this->$model->isValidId($item);
 
       return $valid;
     }
