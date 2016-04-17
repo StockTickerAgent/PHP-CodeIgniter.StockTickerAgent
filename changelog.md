@@ -2,6 +2,17 @@
 All notable changes to this project will be documented to this file.
 Change Log history will be recorded in descending order
 
+## 2.0.2
+** Changed Files**
+- MY_Controller make sure that the BSX status is updated in the constructor and not just when render() is called
+
+## 2.0.1
+** Changed Files **
+- Fix small game status bug that would always say "setup"
+
+## 2.0
+- Update website to register whenever the game state is 2 or 3
+
 ## 1.0.1
 ** Changed Files **
 - Updated footer to stay at the bottom of the page instead of floating at the bottom of the screen

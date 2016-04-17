@@ -33,6 +33,28 @@ body #white-bg {
   margin-bottom: 40px;
 }
 
+#gameStatus .bg-info,
+#gameStatus .bg-warning,
+#gameStatus .bg-danger {
+  margin-top: 20px;
+  padding: 10px;
+}
+
+#gameStatus .bg-info {
+  border: 1px solid #8ABEED;
+  color: #00529B;
+}
+
+#gameStatus .bg-warning {
+  border: 1px solid #FEEFB3;
+  color: #9F6000;
+}
+
+#gameStatus .bg-danger {
+  border: 1px solid #D8000C;
+  color: #D8000C;
+}
+
 
 /*==============================*
  * HEADER Styling
@@ -205,3 +227,11 @@ footer a:hover{
       float: right;
     }
   }
+
+/*==============================*
+ * LOGIN / REGISTER PAGE Styling
+ *==============================*/
+.bg-danger,
+.bg-success {
+  padding: 10px;
+}

@@ -21,6 +21,10 @@ if (!defined('APPPATH'))
     </header>
 
     <div class="container">
+      <section id="gameStatus">
+        {gameStatus}
+      </section>
+
       <section id="content">
         {content}
       </section>
