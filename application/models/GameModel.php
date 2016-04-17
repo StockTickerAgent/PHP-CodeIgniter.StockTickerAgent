@@ -92,4 +92,29 @@ class GameModel extends CI_Model
         }
         return $data;
     }
+
+    function buyStock($code,$quantity,$token){
+        $this->load->library('session');
+        $buyRequest = array(
+            'team' => $this->team,
+            'token'=> $token,
+            'player'=>$this->session->userdata('username'),
+            'stock' => $code,
+            'quantity'=>$quantity
+        );
+        $response = $this->sendPost(BSX.'buy',$buyRequest);
+        $receive = simplexml_load_string($response);
+        $this->UserModel->addHolding($receive);
+    }
+
+    private function sendPost($url, $fields){
+        $handle = curl_init();
+        curl_setopt($handle, CURLOPT_URL,$url);
+        curl_setopt($handle, CURLOPT_POST, 1);
+        curl_setopt($handle, CURLOPT_POSTFIELDS,$fields);
+        curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec ($handle);
+        curl_close ($handle);
+        return $response;
+    }
 }

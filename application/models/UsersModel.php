@@ -42,4 +42,23 @@ class UsersModel extends CI_Model {
         $this->db->update('users', $playersData);
     }
 
+    public function addHolding($request){
+        $data = array(
+            'token' => $request->token,
+            'stock' => $request->stock,
+            'player' => $this->session->userdata('username'),
+            'quantity'=> $request->amount
+        );
+        $this->db->insert('holding',$data);
+
+        $data = array(
+            'DateTime' => $request->datetime,
+            'Player' => $this->session->userdata('username'),
+            'Stock' =>$request->stock,
+            'Trans'=>'buy',
+            'Quantity' => $request->amount
+        );
+        $this->db->insert('transactions',$data);
+    }
+
 }
