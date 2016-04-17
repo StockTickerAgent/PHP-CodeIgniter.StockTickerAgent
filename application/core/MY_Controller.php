@@ -103,16 +103,12 @@ class MY_Controller extends CI_Controller {
       $statusType = array();
       switch($data->state) {
         case 0:
+        case 4:
           $data->addChild('statusType', 'danger');
           break;
         case 1:
-          $data->addChild('statusType', 'warning');
-          break;
         case 2:
           $data->addChild('statusType', 'warning');
-          break;
-        case 4:
-          $data->addChild('statusType', 'danger');
           break;
         default:
           $data->addChild('statusType', 'info');
