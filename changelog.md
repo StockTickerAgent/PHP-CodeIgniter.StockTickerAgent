@@ -2,6 +2,10 @@
 All notable changes to this project will be documented to this file.
 Change Log history will be recorded in descending order
 
+## 2.0.2
+** Changed Files**
+- MY_Controller make sure that the BSX status is updated in the constructor and not just when render() is called
+
 ## 2.0.1
 ** Changed Files **
 - Fix small game status bug that would always say "setup"
