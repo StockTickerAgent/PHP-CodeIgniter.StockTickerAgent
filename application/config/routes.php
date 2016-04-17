@@ -59,7 +59,6 @@ $route["register/process"] = "Register/register_process";
 
 // Log In Routes
 $route["login"] = "Login";
-$route["login/process"] = "Login/login_process";
 
 //Log out
 $route["logout"] = "Logout";

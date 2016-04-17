@@ -205,3 +205,10 @@ footer a:hover{
       float: right;
     }
   }
+
+/*==============================*
+ * LOGIN / REGISTER PAGE Styling
+ *==============================*/
+.bg-danger {
+  padding: 10px;
+}
