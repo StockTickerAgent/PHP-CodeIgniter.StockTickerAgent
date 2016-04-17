@@ -83,3 +83,6 @@ $route["playerManagement/editPlayerProcess"] = "PlayerManagement/editPlayerProce
 
 $route["playerManagement/addPlayer/"] = "PlayerManagement/addPlayer";
 $route["playerManagement/addPlayerProcess/"] = "PlayerManagement/addPlayerProcess";
+
+//buy
+$route['buy'] = 'Game/buy';
