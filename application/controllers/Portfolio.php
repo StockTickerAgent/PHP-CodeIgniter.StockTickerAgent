@@ -33,54 +33,52 @@ class Portfolio extends MY_Controller {
       $this->data['pagebody'] = 'Error_404';
       $this->render();
     } else {
+        $query = $this->PortfolioModel->getSpecificPortfolio($id);
 
+        // Outputs all records to array for easier use
+        $stockResult = array();
+        $currentHoldings = array();
+        $playersName = "";
+        $playerCash = 0;
 
-    $query = $this->PortfolioModel->getSpecificPortfolio($id);
+        foreach ($query->result() as $row) {
+            $stockResult[] = $row;
 
-    // Outputs all records to array for easier use
-    $stockResult = array();
-    $currentHoldings = array();
-    $playersName = "";
-    $playerCash = 0;
-
-    foreach ($query->result() as $row) {
-        $stockResult[] = $row;
-        
-        if ($row->Trans == "buy") {
-            if (array_key_exists($row->Stock, $currentHoldings)) {
-                $currentHoldings[$row->Stock]->Quantity += $row->Quantity;
+            if ($row->Trans == "buy") {
+                if (array_key_exists($row->Stock, $currentHoldings)) {
+                    $currentHoldings[$row->Stock]->Quantity += $row->Quantity;
+                } else {
+                    $currentHoldings[$row->Stock] = clone $row;
+                }
             } else {
-                $currentHoldings[$row->Stock] = clone $row;
-            }
-        } else {
-            if (array_key_exists($row->Stock, $currentHoldings)) {
-                $currentHoldings[$row->Stock]->Quantity -= $row->Quantity;
-            } else {
-                $currentHoldings[$row->Stock] = clone $row;
-                $currentHoldings[$row->Stock]->Quantity *= -1;
+                if (array_key_exists($row->Stock, $currentHoldings)) {
+                    $currentHoldings[$row->Stock]->Quantity -= $row->Quantity;
+                } else {
+                    $currentHoldings[$row->Stock] = clone $row;
+                    $currentHoldings[$row->Stock]->Quantity *= -1;
+                }
             }
         }
-    }  
-    
-    if(count($stockResult) != 0){
-       $playerCash = $stockResult[0]->Cash;
-    } else {
-        $queryPerson = $this->PortfolioModel->getPlayer($id);
-        $person = $queryPerson->result()[0];
-        $playerCash = $person->Cash;
-        $playersName = $person->Player;
-    }
-    
-    // Pass the result to the view
-    $this->data['pagetitle'] = $playersName . '\'s Portfolio - ' . $this->data['pagetitle'];
-    $this->data['stocks'] = $stockResult;
-    $this->data['currentHoldings'] = $currentHoldings;
-    
-    $this->data['cash'] = $playerCash;
-    $this->data['pagebody'] = 'portfolio_single';
-    $this->data['name'] = $playersName;
 
-    $this->render();
+        if(count($stockResult) != 0){
+           $playerCash = $stockResult[0]->Cash;
+        } else {
+            $queryPerson = $this->PortfolioModel->getPlayer($id);
+            $person = $queryPerson->result()[0];
+            $playerCash = $person->Cash;
+            $playersName = $person->Player;
+        }
+
+        // Pass the result to the view
+        $this->data['pagetitle'] = $playersName . '\'s Portfolio - ' . $this->data['pagetitle'];
+        $this->data['stocks'] = $stockResult;
+        $this->data['currentHoldings'] = $currentHoldings;
+
+        $this->data['cash'] = $playerCash;
+        $this->data['pagebody'] = 'portfolio_single';
+        $this->data['name'] = $playersName;
+
+        $this->render();
     }
   }
 

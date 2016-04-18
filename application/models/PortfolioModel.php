@@ -11,14 +11,12 @@ class PortfolioModel extends CI_Model {
     function getSpecificPortfolio($person)
     {
         $this->load->database();
-        
         $this->db->select('*');
         $this->db->from('players');
         $this->db->join('transactions','transactions.Player = players.Player');
         $this->db->join('users','users.Player = players.Player');
         $this->db->where('users.id', $person);
         $query = $this->db->get();
-        
         return $query;
     }
 
@@ -29,9 +27,7 @@ class PortfolioModel extends CI_Model {
         $this->db->select('*');
         $this->db->from('players');
         $this->db->join('users','users.Player = players.Player');
-        
         $query = $this->db->get();
-        
         return $query;
     }
 
@@ -66,9 +62,7 @@ class PortfolioModel extends CI_Model {
         $this->db->from('players');
         $this->db->join('users','users.Player = players.Player');
         $this->db->where('users.id',$playerId);
-        
         $query = $this->db->get();
-        
         return $query;
     }
     
@@ -92,5 +86,4 @@ class PortfolioModel extends CI_Model {
       }
       return false;
     }
-    
 }

@@ -3,7 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Register extends MY_Controller
 {
-
   function index()
   {
     if ($this->input->method(TRUE) == "POST") {
@@ -19,6 +18,7 @@ class Register extends MY_Controller
 
         $this->load->library('upload', $config);
 
+        //error handling for user registration
         if (empty($_POST['password'])
             && empty($_POST['confirmPassword'])
             && empty($_POST['username'])
@@ -62,10 +62,7 @@ class Register extends MY_Controller
             }
         }
     }
-
     $this->data['pagebody'] = 'Register';
     $this->render();
   }
-
-
 }

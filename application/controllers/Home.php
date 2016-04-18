@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends MY_Controller {
 
-  //grab data from model and pass to view
+  //Gets data from model and passes it to view
   function index()
   {
     $this->load->model("StockModel");
