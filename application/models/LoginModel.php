@@ -18,12 +18,10 @@ class LoginModel extends CI_Model
     function login($person)
     {
         $this->load->database();
-
         $this->db->select('players.Player');
         $this->db->from('players');
         $this->db->where('players.Player', $person);
         $query = $this->db->get();
-
         return $query;
     }
 }

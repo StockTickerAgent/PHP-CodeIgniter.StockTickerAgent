@@ -12,7 +12,8 @@ class playerManagement extends MY_Controller
     $this->data['playerList'] = $this->populatePlayers();
     $this->render();
   }
-  
+
+  //delete a player
   function deletePlayer($playerName){
       $this->load->model("PortfolioModel");
       $playerQuery = $this->PortfolioModel->getPlayer($playerName);
@@ -35,7 +36,8 @@ class playerManagement extends MY_Controller
         $this->render();
       
   }
-  
+
+  //populate players from users and return as a list
   function populatePlayers(){
     $this->load->model("PortfolioModel");
     $this->load->model("UsersModel");
@@ -58,7 +60,8 @@ class playerManagement extends MY_Controller
     
     return $playerList;
   }
-  
+
+  //render page to get players to edit
   function editPlayer($id){
       $this->load->model("PortfolioModel");
       $playerQuery = $this->PortfolioModel->getPlayer($id);
@@ -72,16 +75,18 @@ class playerManagement extends MY_Controller
       $this->data['player'] = $player;
       $this->render();
   }
-  
+
+  //
   function editPlayerProcess(){
       $this->load->model("PortfolioModel");
       $this->load->model("UsersModel");
       $playerName = $_POST["playerName"];
       $proceed = true;
       
-      if($playerName != $_POST["prevPlayerName"])
-        $proceed = !$this->PortfolioModel->isValid($playerName);
-      
+      if($playerName != $_POST["prevPlayerName"]) {
+          $proceed = !$this->PortfolioModel->isValid($playerName);
+      }
+
       if($proceed){
           $playersData = array(
                'Player' => $playerName
@@ -94,7 +99,7 @@ class playerManagement extends MY_Controller
                 $config['file_name'] = $this->generateRandomString();
 
                 $this->load->library('upload', $config);
-                
+                //check for failure
                 if ( ! $this->upload->do_upload('avatar')) {
                     // Get the error
                     $error = array('error' => $this->upload->display_errors());
@@ -107,17 +112,10 @@ class playerManagement extends MY_Controller
                 } else {
                     // Get the data
                     $data = array('upload_data' => $this->upload->data());
-                    
-                    // Adding The Users to Database
-                    //$this->UsersModel->addUser($_POST['username'],password_hash($_POST['password'],PASSWORD_DEFAULT),$_POST['role'],$data["upload_data"]["file_name"]);
-                    //$this->PortfolioModel->addPlayer($_POST['username']);
-                    
                     $usersData = array(
                       'avatar' => $data["upload_data"]["file_name"]
                     );
-                    
                     $this->UsersModel->updateAvatar($_POST["prevPlayerName"],$usersData);
-                    
                 }
           } 
           
@@ -134,28 +132,26 @@ class playerManagement extends MY_Controller
         $this->data['playerList'] = $this->populatePlayers();
         $this->render();
       } else {
-            $playerQuery = $this->PortfolioModel->getPlayer($_POST['id']);
+          $playerQuery = $this->PortfolioModel->getPlayer($_POST['id']);
       
-            foreach($playerQuery->result() as $row){
-                $player[] = $row;    
-            }
-            
-            
-          
+          foreach($playerQuery->result() as $row){
+              $player[] = $row;
+          }
           $this->data["ErrorMessage"] = "Player Name Is Already In The Database";
           $this->data['pagebody'] = 'EditPlayer';
           $this->data['player'] = $player;
           $this->render();
       }
-      
   }
-  
+
+  //render page to add a player
   function addPlayer(){
         $this->data["ErrorMessage"] = "";
         $this->data['pagebody'] = 'AddPlayer';
         $this->render();
   }
-  
+
+  //add a player to database
   function addPlayerProcess(){
         $this->load->model("UsersModel");
         $this->load->model('PortfolioModel');
@@ -168,7 +164,8 @@ class playerManagement extends MY_Controller
         $config['file_name'] = $this->generateRandomString();
 
 		$this->load->library('upload', $config);
-        
+
+      //password error handling
         if($_POST['password'] == "" || $_POST['confirmPassword'] == ""){
             $this->data['pagebody'] = 'Register';
             $this->data['ErrorMessage'] = 'Passwords fields cannot be empty';
@@ -221,7 +218,4 @@ class playerManagement extends MY_Controller
 		    }
         }
   }
-  
- 
-
 }

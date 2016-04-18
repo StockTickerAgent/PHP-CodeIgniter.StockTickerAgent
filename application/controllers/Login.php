@@ -15,6 +15,7 @@ class Login extends MY_Controller
         $role = "";
         $id = "";
 
+        //search users table for matching username & password
         foreach ($usersList->result() as $row) {
             if($row->username == $_POST['username'] && password_verify($_POST['password'],$row->password)){
                 $found = true;

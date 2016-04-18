@@ -10,17 +10,16 @@ class UsersModel extends CI_Model {
     function getUsers(){
         $this->db->select('*');
         $this->db->from('users');
-
         $query = $this->db->get();
         return $query;
     }
 
     function addUser($username,$password,$role,$fileName){
         $data = array(
-            'username'      => $username ,
-            'password'      => $password ,
-            'role'          => $role ,
-            'avatar'        => $fileName ,
+            'username'  => $username ,
+            'password'  => $password ,
+            'role'      => $role ,
+            'avatar'    => $fileName ,
             'Player'    => $username
         );
 
